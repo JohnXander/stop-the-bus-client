@@ -1,20 +1,24 @@
-import Button from '@mui/material/Button';
-import { useEffect, useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from 'react-router-dom'
+
+import Login from './components/login/Login'
+import Register from './components/register/Register'
+import Games from './components/games/Games'
 
 const App = () => {
-  const [users, setUsers] = useState([])
-
-  useEffect(() => {
-    fetch('http://localhost:4000/users')
-      .then(res => res.json())
-      .then(data => setUsers(data.users))
-  }, [])
-
   return (
-    <>
-      <Button variant="contained">Stop the bus</Button>
-      {users.map(u => <p key={u.id}>{u.username}</p>)}
-    </>
+    <div>
+      <Router>
+        <Routes>
+          <Route path='/' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/games' element={<Games />} />
+        </Routes>
+      </Router>
+    </div>
   )
 }
 
