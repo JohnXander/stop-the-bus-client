@@ -4,6 +4,7 @@ import './style.css'
 
 const Games = ({ user }) => {
     const [games, setGames] = useState([])
+    const [deleteItem, setDeleteItem] = useState(true)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -12,22 +13,30 @@ const Games = ({ user }) => {
                 .then(res => res.json())
                 .then(data => setGames(data.games))
         }
-    }, [user.id])
+    }, [user.id, deleteItem])
 
-    const handleClick = (game) => navigate(`/games/${game.id}`, { state: { game } })
+    const handleNavigate = (game) => navigate(`/games/${game.id}`, { state: { game } })
+
+    const handleDelete = (game) => {
+        fetch(`http://localhost:4000/games/${game.id}`, {
+            method: 'DELETE'
+        }).then(_ => setDeleteItem(!deleteItem))
+    }
 
     return (
         <>
             <h1>My games</h1>
             {games && games.map(game => {
                 return (
-                    <p
-                        className="game"
-                        key={game.id}
-                        onClick={() => handleClick(game)}
-                    >
-                        {game.name}
-                    </p>
+                    <div className="game-container" key={game.id}>
+                        <p
+                            className="game"
+                            onClick={() => handleNavigate(game)}
+                        >
+                            {game.name}
+                        </p>
+                        <button onClick={() => handleDelete(game)}>Delete</button>
+                    </div>
                 )
             })}
         </>
