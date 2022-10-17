@@ -1,0 +1,5 @@
+.game:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    width: fit-content;
+}
