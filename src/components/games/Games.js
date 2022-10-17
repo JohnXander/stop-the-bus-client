@@ -43,4 +43,6 @@ const Games = ({ user }) => {
     )
 }
 
+//delete
+
 export default Games
