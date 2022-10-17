@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
+import Teams from "../teams/Teams"
+import './style.css'
 
 const Game = () => {
     const location = useLocation()
@@ -16,12 +18,13 @@ const Game = () => {
     }, [id])
 
     return (
-        <div>
+        <>
             <h1>{name}</h1>
-            {teams.map(team => {
-                return <p key={team.id}>{team.name}: {team.points} pts</p>
-            })}
-        </div>
+            <div className="game">
+                <Teams teams={teams} />
+                <h1>Rounds</h1>
+            </div>
+        </>
     )
 }
 

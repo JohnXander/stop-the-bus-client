@@ -30,7 +30,7 @@ const Games = ({ user }) => {
                 return (
                     <div className="game-container" key={game.id}>
                         <p
-                            className="game"
+                            className="game-item"
                             onClick={() => handleNavigate(game)}
                         >
                             {game.name}
@@ -42,7 +42,5 @@ const Games = ({ user }) => {
         </>
     )
 }
-
-//delete
 
 export default Games
