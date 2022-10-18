@@ -17,7 +17,7 @@ const Games = ({ user }) => {
 
     const handleNavigate = (game) => {
         if (game === 'CREATE') {
-            navigate('/create')
+            navigate('/create/name', { state: { user } })
         } else {
             navigate(`/games/${game.id}`, { state: { game } })
         }

@@ -11,7 +11,7 @@ import Games from './components/games/Games'
 import Header from './components/header/Header'
 import Landing from './components/landing/Landing'
 import Game from './components/game/Game'
-import Create from './components/create/Create'
+import CreateName from './components/create/CreateName'
 
 const App = () => {
   const [user, setUser] = useState({})
@@ -32,7 +32,7 @@ const App = () => {
           <Route path='/register' element={<Register />} />
           <Route path='/games' element={<Games user={user} />} />
           <Route path='/games/:id' element={<Game user={user} />} />
-          <Route path='/create' element={<Create />} />
+          <Route path='/create/name' element={<CreateName />} />
         </Routes>
       </Router>
     </div>
