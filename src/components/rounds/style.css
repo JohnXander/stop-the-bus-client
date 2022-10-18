@@ -1,6 +1,12 @@
-.rounds {
-    width: fit-content;
-    margin: 1rem 0 0 2.5rem;
+.round {
     display: flex;
-    flex-direction: column;
+    margin: 1rem 0 0 2.5rem;
+    gap: 2rem;
+}
+
+.answers {
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    width: 750px;
 }

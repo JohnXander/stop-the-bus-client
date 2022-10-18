@@ -4,7 +4,16 @@ const Rounds = ({ rounds }) => {
     return (
         <div className='rounds'>
             {rounds.map(round => {
-                return <p key={round.id}>{round.letter}</p>
+                return (
+                    <div className="round">
+                        <p key={round.id}>{round.letter}</p>
+                        <div className='answers'>
+                            {round.answers.map((answer, i) => {
+                                return <p key={i}>{answer}</p>
+                            })}
+                        </div>
+                    </div>
+                )
             })}
         </div>
     )
