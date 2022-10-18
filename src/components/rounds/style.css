@@ -15,3 +15,16 @@
     cursor: pointer;
     background-color: grey !important;
 }
+
+.card {
+    background-color: #212529;
+    border: 1px solid white;
+    border-radius: 3px;
+    margin: 1rem 0;
+}
+
+.card img {
+    width: 15rem;
+    height: 10rem;
+    object-fit: cover;
+}
