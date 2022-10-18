@@ -30,7 +30,7 @@ const Game = () => {
     }, [id])
 
     return (
-        <>
+        <div>
             <h1>{name}</h1>
             <div className="game">
                 <Teams teams={teams} />
@@ -39,7 +39,7 @@ const Game = () => {
                     <Rounds rounds={rounds} />
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

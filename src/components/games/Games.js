@@ -15,7 +15,13 @@ const Games = ({ user }) => {
         }
     }, [user.id, deleteItem])
 
-    const handleNavigate = (game) => navigate(`/games/${game.id}`, { state: { game } })
+    const handleNavigate = (game) => {
+        if (game === 'CREATE') {
+            navigate('/create')
+        } else {
+            navigate(`/games/${game.id}`, { state: { game } })
+        }
+    }
 
     const handleDelete = (game) => {
         fetch(`http://localhost:4000/games/${game.id}`, {
@@ -24,8 +30,9 @@ const Games = ({ user }) => {
     }
 
     return (
-        <>
+        <div>
             <h1>My games</h1>
+            <button onClick={() => handleNavigate('CREATE')}>Create New Game</button>
             {games && games.map(game => {
                 return (
                     <div className="game-container" key={game.id}>
@@ -39,7 +46,7 @@ const Games = ({ user }) => {
                     </div>
                 )
             })}
-        </>
+        </div>
     )
 }
 
