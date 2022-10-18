@@ -10,3 +10,8 @@
     justify-content: space-between;
     width: 750px;
 }
+
+.answers:hover {
+    cursor: pointer;
+    background-color: grey !important;
+}
