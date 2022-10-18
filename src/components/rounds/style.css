@@ -1,0 +1,6 @@
+.rounds {
+    width: fit-content;
+    margin: 1rem 0 0 2.5rem;
+    display: flex;
+    flex-direction: column;
+}
