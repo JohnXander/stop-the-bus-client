@@ -21,10 +21,8 @@ const Rounds = ({ rounds }) => {
         <div className='rounds'>
             {rounds.map(round => {
                 return (
-                    <div
-                        className="round"
-                    >
-                        <p key={round.id}>{round.letter}</p>
+                    <div key={round.id} className="round">
+                        <p>{round.letter}</p>
                         {
                             round.id === roundView && roundView !== undefined ?
                                 <div

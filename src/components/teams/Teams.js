@@ -8,8 +8,8 @@ const Teams = ({ teams }) => {
                     <div key={team.id}>
                         <h3>{team.name}</h3>
                         <div className="players">
-                            {team.players.map(player => {
-                                return <p>{player},</p>
+                            {team.players.map((player, i) => {
+                                return <p key={i}>{player},</p>
                             })}
                         </div>
                         <p>{team.points} pts</p>
