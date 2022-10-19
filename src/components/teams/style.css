@@ -8,18 +8,6 @@
     margin: 1rem 0 0.5rem 0;
 }
 
-.players {
-    display: flex;
-    gap: 0.5rem;
-    padding: 0;
-
-}
-
-.player {
-    margin: 0.15rem 0 0 0;
-    font-size: 0.75rem;
-}
-
 .points {
     border: 1px solid white;
     width: fit-content;

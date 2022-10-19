@@ -18,7 +18,8 @@ const CreateName = () => {
             },
             body: JSON.stringify({ name, userId: +userId }),
         })
-            .then(_ => navigate('/create/teams'))
+            .then(res => res.json())
+            .then(data => navigate('/create/teams', { state: { data } }))
     }
 
     const handleChange = (event) => {

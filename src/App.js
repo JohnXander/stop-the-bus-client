@@ -12,6 +12,7 @@ import Header from './components/header/Header'
 import Landing from './components/landing/Landing'
 import Game from './components/game/Game'
 import CreateName from './components/create/CreateName'
+import CreateTeams from './components/create/CreateTeams'
 
 const App = () => {
   const [user, setUser] = useState({})
@@ -33,6 +34,7 @@ const App = () => {
           <Route path='/games' element={<Games user={user} />} />
           <Route path='/games/:id' element={<Game user={user} />} />
           <Route path='/create/name' element={<CreateName />} />
+          <Route path='/create/teams' element={<CreateTeams />} />
         </Routes>
       </Router>
     </div>
