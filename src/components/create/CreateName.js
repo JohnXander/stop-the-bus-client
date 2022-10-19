@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './style.css'
 
 const CreateName = () => {
     const location = useLocation()
+    const navigate = useNavigate()
     const userId = location.state.user.id
     const [formValue, setFormValue] = useState({})
 
@@ -17,6 +18,7 @@ const CreateName = () => {
             },
             body: JSON.stringify({ name, userId: +userId }),
         })
+            .then(_ => navigate('/create/teams'))
     }
 
     const handleChange = (event) => {
