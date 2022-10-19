@@ -49,7 +49,12 @@ const Rounds = ({ rounds, updateRound, setUpdateRound }) => {
                                 >
                                     {round.answers.length ? round.answers.map((answer, i) => {
                                         return <p key={i}>{answer}</p>
-                                    }) : <CreateAnswers updateRound={updateRound} setUpdateRound={setUpdateRound} round={round} />}
+                                    }) :
+                                        <CreateAnswers
+                                            updateRound={updateRound}
+                                            setUpdateRound={setUpdateRound}
+                                            round={round}
+                                        />}
                                 </div>
                         }
                     </div>

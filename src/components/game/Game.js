@@ -34,7 +34,6 @@ const Game = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log('frog', formValue.round)
         fetch('http://localhost:4000/rounds', {
             method: 'POST',
             headers: {
