@@ -5,6 +5,7 @@ const CreateTeams = () => {
     const location = useLocation()
     const navigate = useNavigate()
     const gameData = location.state.data.game
+    const gameName = gameData.name
     const gameId = gameData.id
 
     const [formValue, setFormValue] = useState({})
@@ -20,7 +21,8 @@ const CreateTeams = () => {
             },
             body: JSON.stringify({ teams: teamNames, gameId: +gameId }),
         })
-            .then(_ => navigate('/create/categories', { state: { gameData } }))
+            .then(res => res.json())
+            .then(data => navigate('/create/categories', { state: { gameData, data } }))
     }
 
     const handleChange = (event) => {
@@ -38,7 +40,7 @@ const CreateTeams = () => {
     }
 
     return (
-        <div>
+        <div className="form-container">
             <form onSubmit={handleSubmit} className='game-form'>
                 <h3>Teams</h3>
                 {teams.map((team, i) => {
@@ -52,6 +54,10 @@ const CreateTeams = () => {
                 <button onClick={handleClick}>Add another team</button>
                 <button type='submit'>Submit</button>
             </form>
+            <div className="game-preview">
+                <h2>Game Details</h2>
+                <h3>Name: {gameName}</h3>
+            </div>
         </div>
     )
 }
