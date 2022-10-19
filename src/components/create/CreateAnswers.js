@@ -1,0 +1,52 @@
+import { useState } from 'react';
+import './style.css'
+
+const CreateAnswers = ({ round, updateRound, setUpdateRound }) => {
+    const { id, letter, gameId } = round
+    const [formValue, setFormValue] = useState({})
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const formAnswers = Object.values(formValue)
+        fetch(`http://localhost:4000/rounds/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ letter, answers: formAnswers, gameId }),
+        })
+            .then(_ => setUpdateRound(!updateRound))
+    }
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormValue((prevState) => {
+            return {
+                ...prevState,
+                [name]: value,
+            }
+        })
+    };
+
+    return (
+        <form onSubmit={handleSubmit} className='answer-form-container'>
+            <div className='answer-forms'>
+                <div className='answer-form'>
+                    <label>Word</label>
+                    <input name='word1' onChange={handleChange} type="text" required />
+                </div>
+                <div className='answer-form'>
+                    <label>Word</label>
+                    <input name='word2' onChange={handleChange} type="text" required />
+                </div>
+                <div className='answer-form'>
+                    <label>Word</label>
+                    <input name='word3' onChange={handleChange} type="text" required />
+                </div>
+            </div>
+            <button type='submit'>Submit Answers</button>
+        </form>
+    )
+}
+
+export default CreateAnswers

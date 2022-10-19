@@ -1,7 +1,8 @@
 import { useState } from 'react'
+import CreateAnswers from '../create/CreateAnswers'
 import './style.css'
 
-const Rounds = ({ rounds }) => {
+const Rounds = ({ rounds, updateRound, setUpdateRound }) => {
     const [roundView, setRoundView] = useState(undefined)
     const [cards, setCards] = useState([])
 
@@ -13,8 +14,10 @@ const Rounds = ({ rounds }) => {
     }
 
     const handleClick = (round, idx) => {
-        setRoundView(round.id)
-        displayCards(idx)
+        if (round.answers.length) {
+            setRoundView(round.id)
+            displayCards(idx)
+        }
     }
 
     return (
@@ -28,7 +31,6 @@ const Rounds = ({ rounds }) => {
                                 <div
                                     style={{ backgroundColor: 'grey' }}
                                     className='answers'
-                                    onClick={() => handleClick(round, idx)}
                                 >
                                     {cards.map(card => {
                                         return (
@@ -45,9 +47,9 @@ const Rounds = ({ rounds }) => {
                                     className='answers'
                                     onClick={() => handleClick(round, idx)}
                                 >
-                                    {round.answers.map((answer, i) => {
+                                    {round.answers.length ? round.answers.map((answer, i) => {
                                         return <p key={i}>{answer}</p>
-                                    })}
+                                    }) : <CreateAnswers updateRound={updateRound} setUpdateRound={setUpdateRound} round={round} />}
                                 </div>
                         }
                     </div>

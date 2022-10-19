@@ -14,6 +14,7 @@ const Game = () => {
     const [categories, setCategories] = useState([])
     const [rounds, setRounds] = useState([])
     const [addRound, setAddRound] = useState(true)
+    const [updateRound, setUpdateRound] = useState(true)
 
     useEffect(() => {
         if (id !== undefined) {
@@ -29,7 +30,7 @@ const Game = () => {
                 .then(res => res.json())
                 .then(data => setRounds(data.rounds))
         }
-    }, [id, addRound])
+    }, [id, addRound, updateRound])
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -61,7 +62,7 @@ const Game = () => {
                 <Teams teams={teams} />
                 <div>
                     <Categories categories={categories} />
-                    <Rounds rounds={rounds} />
+                    <Rounds updateRound={updateRound} setUpdateRound={setUpdateRound} rounds={rounds} />
                     <form className="add-round" onSubmit={handleSubmit}>
                         <label>Add New Round:</label>
                         <input name='round' onChange={handleChange} type="text" required />
