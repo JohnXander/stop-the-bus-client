@@ -5,6 +5,11 @@
     border-bottom: 1px solid white;
 }
 
+.app-name {
+    text-decoration: none;
+    color: white;
+}
+
 .user {
     display: flex;
     gap: 1rem;
