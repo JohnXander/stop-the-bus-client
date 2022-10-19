@@ -12,7 +12,6 @@ const CreateCategories = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log('polar bear', formValue)
         const categoryNames = Object.values(formValue)
         fetch('http://localhost:4000/categories', {
             method: 'POST',

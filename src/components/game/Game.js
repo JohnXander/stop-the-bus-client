@@ -8,10 +8,12 @@ import './style.css'
 const Game = () => {
     const location = useLocation()
     const { id, name } = location.state.game
+    const [formValue, setFormValue] = useState({})
 
     const [teams, setTeams] = useState([])
     const [categories, setCategories] = useState([])
     const [rounds, setRounds] = useState([])
+    const [addRound, setAddRound] = useState(true)
 
     useEffect(() => {
         if (id !== undefined) {
@@ -27,7 +29,30 @@ const Game = () => {
                 .then(res => res.json())
                 .then(data => setRounds(data.rounds))
         }
-    }, [id])
+    }, [id, addRound])
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log('frog', formValue.round)
+        fetch('http://localhost:4000/rounds', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ letter: formValue.round, answers: [], gameId: +id }),
+        })
+            .then(_ => setAddRound(!addRound))
+    }
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormValue((prevState) => {
+            return {
+                ...prevState,
+                [name]: value,
+            }
+        })
+    };
 
     return (
         <div>
@@ -37,6 +62,11 @@ const Game = () => {
                 <div>
                     <Categories categories={categories} />
                     <Rounds rounds={rounds} />
+                    <form className="add-round" onSubmit={handleSubmit}>
+                        <label>Add New Round:</label>
+                        <input name='round' onChange={handleChange} type="text" required />
+                        <button type="submit">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>

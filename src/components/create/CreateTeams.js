@@ -56,7 +56,8 @@ const CreateTeams = () => {
             </form>
             <div className="game-preview">
                 <h2>Game Details</h2>
-                <h3>Name: {gameName}</h3>
+                <h3>Name:</h3>
+                <p>{gameName}</p>
             </div>
         </div>
     )

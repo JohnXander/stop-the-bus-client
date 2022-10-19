@@ -1,3 +1,16 @@
 .game {
     display: flex;
 }
+
+.add-round {
+    border-top: 1px solid white;
+    padding: 1rem;
+    display: flex;
+    width: 750px;
+    margin-left: 5rem;
+}
+
+.add-round input {
+    width: 5rem;
+    margin-right: 1rem;
+}

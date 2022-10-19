@@ -26,7 +26,8 @@ const Games = ({ user }) => {
     const handleDelete = (game) => {
         fetch(`http://localhost:4000/games/${game.id}`, {
             method: 'DELETE'
-        }).then(_ => setDeleteItem(!deleteItem))
+        })
+            .then(_ => setDeleteItem(!deleteItem))
     }
 
     return (
