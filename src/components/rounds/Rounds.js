@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Cards from '../cards/Cards'
 import CreateAnswers from '../create/CreateAnswers'
 import './style.css'
 
@@ -41,15 +42,7 @@ const Rounds = ({ rounds, updateRound, setUpdateRound, deleteRound, setDeleteRou
                                     style={{ backgroundColor: 'grey' }}
                                     className='answers'
                                 >
-                                    {cards.map(card => {
-                                        return (
-                                            <div key={card.id} className="card">
-                                                <img src={card.imgUrl} alt={card.word} />
-                                                <h3>{card.word}</h3>
-                                                <p>{card.type}</p>
-                                            </div>
-                                        )
-                                    })}
+                                    <Cards cards={cards} round={round} />
                                 </div> :
                                 <div
                                     style={{ backgroundColor: '#212529' }}

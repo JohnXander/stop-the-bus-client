@@ -60,7 +60,7 @@ const Game = () => {
 
     return (
         <div>
-            <h1>{name}</h1>
+            <h1 className="game-name">{name}</h1>
             <div className="game">
                 <Teams updateTeam={updateTeam} setUpdateTeam={setUpdateTeam} teams={teams} />
                 <div>

@@ -1,3 +1,7 @@
+.game-name {
+    margin-left: 1rem;
+}
+
 .game {
     display: flex;
 }
