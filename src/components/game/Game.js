@@ -15,6 +15,7 @@ const Game = () => {
     const [rounds, setRounds] = useState([])
     const [addRound, setAddRound] = useState(true)
     const [updateRound, setUpdateRound] = useState(true)
+    const [deleteRound, setDeleteRound] = useState(true)
     const [updateTeam, setUpdateTeam] = useState(true)
 
     useEffect(() => {
@@ -31,16 +32,18 @@ const Game = () => {
                 .then(res => res.json())
                 .then(data => setRounds(data.rounds))
         }
-    }, [id, addRound, updateRound, updateTeam])
+    }, [id, addRound, updateRound, updateTeam, deleteRound])
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        const capitalLetter = formValue.round.toUpperCase()
+
         fetch('http://localhost:4000/rounds', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ letter: formValue.round, answers: [], gameId: +id }),
+            body: JSON.stringify({ letter: capitalLetter, answers: [], gameId: +id }),
         })
             .then(_ => setAddRound(!addRound))
     }
@@ -62,10 +65,16 @@ const Game = () => {
                 <Teams updateTeam={updateTeam} setUpdateTeam={setUpdateTeam} teams={teams} />
                 <div>
                     <Categories categories={categories} />
-                    <Rounds updateRound={updateRound} setUpdateRound={setUpdateRound} rounds={rounds} />
+                    <Rounds
+                        deleteRound={deleteRound}
+                        setDeleteRound={setDeleteRound}
+                        updateRound={updateRound}
+                        setUpdateRound={setUpdateRound}
+                        rounds={rounds}
+                    />
                     <form className="add-round" onSubmit={handleSubmit}>
                         <label>Add New Round:</label>
-                        <input name='round' onChange={handleChange} type="text" required />
+                        <input name='round' onChange={handleChange} type="text" maxLength={1} required />
                         <button type="submit">Submit Round</button>
                     </form>
                 </div>

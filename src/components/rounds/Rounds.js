@@ -2,12 +2,12 @@ import { useState } from 'react'
 import CreateAnswers from '../create/CreateAnswers'
 import './style.css'
 
-const Rounds = ({ rounds, updateRound, setUpdateRound }) => {
+const Rounds = ({ rounds, updateRound, setUpdateRound, deleteRound, setDeleteRound }) => {
     const [roundView, setRoundView] = useState(undefined)
     const [cards, setCards] = useState([])
 
     const displayCards = (idx) => {
-        const answers = rounds[idx].answers.join(',')
+        const answers = rounds[idx].answers.join(',').toLowerCase()
         fetch(`http://localhost:4000/cards?words=${answers}`)
             .then(res => res.json())
             .then(data => setCards(data.cards))
@@ -18,6 +18,15 @@ const Rounds = ({ rounds, updateRound, setUpdateRound }) => {
             setRoundView(round.id)
             displayCards(idx)
         }
+    }
+
+    const handleHide = () => setRoundView(undefined)
+
+    const handleDelete = (roundId) => {
+        fetch(`http://localhost:4000/rounds/${roundId}`, {
+            method: 'DELETE'
+        })
+            .then(_ => setDeleteRound(!deleteRound))
     }
 
     return (
@@ -57,6 +66,11 @@ const Rounds = ({ rounds, updateRound, setUpdateRound }) => {
                                         />}
                                 </div>
                         }
+                        <div className='round-controls'>
+                            {round.id === roundView ?
+                                <button onClick={handleHide}>Hide Cards</button> :
+                                <button onClick={() => handleDelete(round.id)}>Delete Round</button>}
+                        </div>
                     </div>
                 )
             })}
