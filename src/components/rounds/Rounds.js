@@ -3,7 +3,7 @@ import Cards from '../cards/Cards'
 import CreateAnswers from '../create/CreateAnswers'
 import './style.css'
 
-const Rounds = ({ rounds, updateRound, setUpdateRound, deleteRound, setDeleteRound }) => {
+const Rounds = ({ rounds, updateRound, setUpdateRound, deleteRound, setDeleteRound, addCard, setAddCard }) => {
     const [roundView, setRoundView] = useState(undefined)
     const [editView, setEditView] = useState(undefined)
     const [cards, setCards] = useState([])
@@ -23,11 +23,7 @@ const Rounds = ({ rounds, updateRound, setUpdateRound, deleteRound, setDeleteRou
     }
 
     const handleHide = () => setRoundView(undefined)
-
-    const handleEdit = (roundId) => {
-        console.log('edit', roundId)
-        setEditView(roundId)
-    }
+    const handleEdit = (roundId) => setEditView(roundId)
 
     const handleDelete = (roundId) => {
         fetch(`http://localhost:4000/rounds/${roundId}`, {
@@ -49,6 +45,9 @@ const Rounds = ({ rounds, updateRound, setUpdateRound, deleteRound, setDeleteRou
                                     className='answers'
                                 >
                                     <Cards
+                                        setRoundView={setRoundView}
+                                        addCard={addCard}
+                                        setAddCard={setAddCard}
                                         editView={editView}
                                         setEditView={setEditView}
                                         cards={cards}

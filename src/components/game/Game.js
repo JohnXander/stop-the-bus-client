@@ -17,6 +17,7 @@ const Game = () => {
     const [updateRound, setUpdateRound] = useState(true)
     const [deleteRound, setDeleteRound] = useState(true)
     const [updateTeam, setUpdateTeam] = useState(true)
+    const [addCard, setAddCard] = useState(true)
 
     useEffect(() => {
         if (id !== undefined) {
@@ -32,7 +33,7 @@ const Game = () => {
                 .then(res => res.json())
                 .then(data => setRounds(data.rounds))
         }
-    }, [id, addRound, updateRound, updateTeam, deleteRound])
+    }, [id, addRound, updateRound, updateTeam, deleteRound, addCard])
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -66,6 +67,8 @@ const Game = () => {
                 <div>
                     <Categories categories={categories} />
                     <Rounds
+                        addCard={addCard}
+                        setAddCard={setAddCard}
                         deleteRound={deleteRound}
                         setDeleteRound={setDeleteRound}
                         updateRound={updateRound}
