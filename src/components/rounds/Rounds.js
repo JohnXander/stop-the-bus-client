@@ -23,6 +23,10 @@ const Rounds = ({ rounds, updateRound, setUpdateRound, deleteRound, setDeleteRou
 
     const handleHide = () => setRoundView(undefined)
 
+    const handleEdit = () => {
+        console.log('edit')
+    }
+
     const handleDelete = (roundId) => {
         fetch(`http://localhost:4000/rounds/${roundId}`, {
             method: 'DELETE'
@@ -60,9 +64,14 @@ const Rounds = ({ rounds, updateRound, setUpdateRound, deleteRound, setDeleteRou
                                 </div>
                         }
                         <div className='round-controls'>
-                            {round.id === roundView ?
+                            {round.id === roundView && cards.length === 3 ?
                                 <button onClick={handleHide}>Hide Cards</button> :
-                                <button onClick={() => handleDelete(round.id)}>Delete Round</button>}
+                                round.id === roundView && cards.length < 3 ?
+                                    <div className='cards-control'>
+                                        <button onClick={handleHide}>Hide Cards</button>
+                                        <button onClick={handleEdit}>Edit Cards</button>
+                                    </div> :
+                                    <button onClick={() => handleDelete(round.id)}>Delete Round</button>}
                         </div>
                     </div>
                 )
