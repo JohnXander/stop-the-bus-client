@@ -1,6 +1,7 @@
 import './style.css'
 
 const Teams = ({ teams, updateTeam, setUpdateTeam }) => {
+    teams.sort((a, b) => a.name.localeCompare(b.name))
 
     const handleClick = (team, dir) => {
         const { id, name, points, gameId } = team

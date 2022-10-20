@@ -30,17 +30,15 @@ const CreateAnswers = ({ round, updateRound, setUpdateRound }) => {
 
     return (
         <form onSubmit={handleSubmit} className='answer-form-container'>
+            <p>Answers:</p>
             <div className='answer-forms'>
                 <div className='answer-form'>
-                    <label>Word</label>
                     <input name='word1' onChange={handleChange} type="text" required />
                 </div>
                 <div className='answer-form'>
-                    <label>Word</label>
                     <input name='word2' onChange={handleChange} type="text" required />
                 </div>
                 <div className='answer-form'>
-                    <label>Word</label>
                     <input name='word3' onChange={handleChange} type="text" required />
                 </div>
             </div>

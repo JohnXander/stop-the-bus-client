@@ -66,7 +66,7 @@ const Game = () => {
                     <form className="add-round" onSubmit={handleSubmit}>
                         <label>Add New Round:</label>
                         <input name='round' onChange={handleChange} type="text" required />
-                        <button type="submit">Submit</button>
+                        <button type="submit">Submit Round</button>
                     </form>
                 </div>
             </div>

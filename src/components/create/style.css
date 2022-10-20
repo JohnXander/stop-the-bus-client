@@ -28,6 +28,11 @@ label {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    padding: 1rem 0;
+}
+
+.answer-form-container p {
+    margin: 0;
 }
 
 .answer-forms {
