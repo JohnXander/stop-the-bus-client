@@ -6,7 +6,7 @@
 }
 
 .answers {
-    padding: 0 1rem;
+    padding: 0;
     display: flex;
     justify-content: space-between;
     width: 750px;

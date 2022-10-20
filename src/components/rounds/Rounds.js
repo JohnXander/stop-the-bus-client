@@ -5,6 +5,7 @@ import './style.css'
 
 const Rounds = ({ rounds, updateRound, setUpdateRound, deleteRound, setDeleteRound }) => {
     const [roundView, setRoundView] = useState(undefined)
+    const [editView, setEditView] = useState(undefined)
     const [cards, setCards] = useState([])
 
     const displayCards = (idx) => {
@@ -23,8 +24,9 @@ const Rounds = ({ rounds, updateRound, setUpdateRound, deleteRound, setDeleteRou
 
     const handleHide = () => setRoundView(undefined)
 
-    const handleEdit = () => {
-        console.log('edit')
+    const handleEdit = (roundId) => {
+        console.log('edit', roundId)
+        setEditView(roundId)
     }
 
     const handleDelete = (roundId) => {
@@ -46,7 +48,12 @@ const Rounds = ({ rounds, updateRound, setUpdateRound, deleteRound, setDeleteRou
                                     style={{ backgroundColor: 'grey' }}
                                     className='answers'
                                 >
-                                    <Cards cards={cards} round={round} />
+                                    <Cards
+                                        editView={editView}
+                                        setEditView={setEditView}
+                                        cards={cards}
+                                        round={round}
+                                    />
                                 </div> :
                                 <div
                                     style={{ backgroundColor: '#212529' }}
@@ -69,7 +76,7 @@ const Rounds = ({ rounds, updateRound, setUpdateRound, deleteRound, setDeleteRou
                                 round.id === roundView && cards.length < 3 ?
                                     <div className='cards-control'>
                                         <button onClick={handleHide}>Hide Cards</button>
-                                        <button onClick={handleEdit}>Edit Cards</button>
+                                        <button onClick={() => handleEdit(round.id)}>Edit Cards</button>
                                     </div> :
                                     <button onClick={() => handleDelete(round.id)}>Delete Round</button>}
                         </div>
