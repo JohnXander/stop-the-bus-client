@@ -9,6 +9,12 @@
 }
 
 .points {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.points p {
     border: 1px solid white;
     width: fit-content;
     padding: 1rem;
