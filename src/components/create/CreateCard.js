@@ -6,6 +6,9 @@ const CreateCard = ({ editCard, setEditCard, setEditView, setRoundView, userId }
     const handleSubmit = (e) => {
         e.preventDefault()
 
+        formValue.word = formValue.word.toLowerCase()
+        formValue.type = formValue.type.toLowerCase()
+
         fetch('http://localhost:4000/cards', {
             method: 'POST',
             headers: {

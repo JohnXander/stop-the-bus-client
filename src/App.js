@@ -4,7 +4,6 @@ import {
   Route
 } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-
 import Login from './components/login/Login'
 import Register from './components/register/Register'
 import Games from './components/games/Games'

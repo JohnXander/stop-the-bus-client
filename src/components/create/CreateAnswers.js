@@ -7,7 +7,7 @@ const CreateAnswers = ({ round, editRound, setEditRound }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const formAnswers = Object.values(formValue)
+        const formAnswers = Object.values(formValue).map(val => val.toLowerCase())
         fetch(`http://localhost:4000/rounds/${id}`, {
             method: 'PATCH',
             headers: {
