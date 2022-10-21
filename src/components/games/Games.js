@@ -4,8 +4,10 @@ import './style.css'
 
 const Games = ({ user }) => {
     const [games, setGames] = useState([])
-    const [deleteItem, setDeleteItem] = useState(true)
+    const [editGameList, setEditGameList] = useState(true)
     const navigate = useNavigate()
+
+    games.sort((a, b) => a.name.localeCompare(b.name))
 
     useEffect(() => {
         if (user.id !== undefined) {
@@ -13,7 +15,7 @@ const Games = ({ user }) => {
                 .then(res => res.json())
                 .then(data => setGames(data.games))
         }
-    }, [user.id, deleteItem])
+    }, [user.id, editGameList])
 
     const handleNavigate = (game) => {
         if (game === 'CREATE') {
@@ -27,7 +29,22 @@ const Games = ({ user }) => {
         fetch(`http://localhost:4000/games/${game.id}`, {
             method: 'DELETE'
         })
-            .then(_ => setDeleteItem(!deleteItem))
+            .then(_ => setEditGameList(!editGameList))
+    }
+
+    const handleComplete = (game) => {
+        const { name, id, completed } = game
+        const userId = user.id
+        const newCompleted = !completed
+
+        fetch(`http://localhost:4000/games/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name, userId, completed: newCompleted }),
+        })
+            .then(_ => setEditGameList(!editGameList))
     }
 
     return (
@@ -44,6 +61,11 @@ const Games = ({ user }) => {
                             {game.name}
                         </p>
                         <button onClick={() => handleDelete(game)}>Delete</button>
+                        {
+                            game.completed ?
+                                <button onClick={() => handleComplete(game)}>Unmark as complete</button> :
+                                <button onClick={() => handleComplete(game)}>Mark as complete</button>
+                        }
                     </div>
                 )
             })}

@@ -16,7 +16,7 @@ const CreateName = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ name, userId: +userId }),
+            body: JSON.stringify({ name, completed: false, userId: +userId }),
         })
             .then(res => res.json())
             .then(data => navigate('/create/teams', { state: { data } }))

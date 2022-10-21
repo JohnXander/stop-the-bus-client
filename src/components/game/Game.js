@@ -61,7 +61,11 @@ const Game = () => {
         <div>
             <h1 className="game-name">{name}</h1>
             <div className="game">
-                <Teams editTeam={editTeam} setEditTeam={setEditTeam} teams={teams} />
+                <Teams
+                    editTeam={editTeam}
+                    setEditTeam={setEditTeam}
+                    teams={teams}
+                />
                 <div>
                     <Categories categories={categories} />
                     <Rounds
