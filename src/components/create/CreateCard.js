@@ -1,7 +1,7 @@
 import { useState } from "react"
 
-const CreateCard = ({ addCard, setAddCard, setEditView, setRoundView }) => {
-    const [formValue, setFormValue] = useState({})
+const CreateCard = ({ addCard, setAddCard, setEditView, setRoundView, userId }) => {
+    const [formValue, setFormValue] = useState({ userId: +userId })
 
     const handleSubmit = (e) => {
         e.preventDefault()

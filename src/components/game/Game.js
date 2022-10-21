@@ -7,7 +7,7 @@ import './style.css'
 
 const Game = () => {
     const location = useLocation()
-    const { id, name } = location.state.game
+    const { id, name, userId } = location.state.game
     const [formValue, setFormValue] = useState({})
 
     const [teams, setTeams] = useState([])
@@ -67,6 +67,7 @@ const Game = () => {
                 <div>
                     <Categories categories={categories} />
                     <Rounds
+                        userId={userId}
                         addCard={addCard}
                         setAddCard={setAddCard}
                         deleteRound={deleteRound}

@@ -1,7 +1,7 @@
 import CreateCard from '../create/CreateCard'
 import './style.css'
 
-const Cards = ({ cards, round, editView, setEditView, addCard, setAddCard, setRoundView }) => {
+const Cards = ({ cards, round, editView, setEditView, addCard, setAddCard, setRoundView, userId }) => {
     const { id, answers } = round
 
     const allCards = answers.map((answer) => {
@@ -28,6 +28,7 @@ const Cards = ({ cards, round, editView, setEditView, addCard, setAddCard, setRo
                 })}
             </div>
             {editView === id && <CreateCard
+                userId={userId}
                 addCard={addCard}
                 setAddCard={setAddCard}
                 setEditView={setEditView}
