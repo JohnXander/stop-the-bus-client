@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const CreateCard = ({ editCard, setEditCard, setEditView, setRoundView, userId }) => {
+const CreateCard = ({ userId, displayCards, roundIndex, setEditView }) => {
     const [formValue, setFormValue] = useState({ userId: +userId })
 
     const handleSubmit = (e) => {
@@ -17,9 +17,8 @@ const CreateCard = ({ editCard, setEditCard, setEditView, setRoundView, userId }
             body: JSON.stringify(formValue),
         })
             .then(_ => {
-                setEditCard(!editCard)
+                displayCards(roundIndex)
                 setEditView(undefined)
-                setRoundView(undefined)
             })
     }
 

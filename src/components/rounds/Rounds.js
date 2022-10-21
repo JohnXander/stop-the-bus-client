@@ -3,7 +3,7 @@ import Cards from '../cards/Cards'
 import CreateAnswers from '../create/CreateAnswers'
 import './style.css'
 
-const Rounds = ({ rounds, editCard, setEditCard, userId, editRound, setEditRound }) => {
+const Rounds = ({ rounds, userId, editRound, setEditRound }) => {
     const [roundView, setRoundView] = useState(undefined)
     const [editView, setEditView] = useState(undefined)
     const [cards, setCards] = useState([])
@@ -46,13 +46,12 @@ const Rounds = ({ rounds, editCard, setEditCard, userId, editRound, setEditRound
                                 >
                                     <Cards
                                         userId={userId}
-                                        setRoundView={setRoundView}
-                                        editCard={editCard}
-                                        setEditCard={setEditCard}
                                         editView={editView}
                                         setEditView={setEditView}
                                         cards={cards}
                                         round={round}
+                                        displayCards={displayCards}
+                                        roundIndex={idx}
                                     />
                                 </div> :
                                 <div
