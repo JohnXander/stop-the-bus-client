@@ -7,7 +7,7 @@ import './style.css'
 
 const Game = () => {
     const location = useLocation()
-    const { id, name, userId } = location.state.game
+    const { id, name, completed, userId } = location.state.game
     const [formValue, setFormValue] = useState({})
 
     const [teams, setTeams] = useState([])
@@ -59,12 +59,16 @@ const Game = () => {
 
     return (
         <div>
-            <h1 className="game-name">{name}</h1>
+            <div className="game-header">
+                <h1 className="game-name">{name}</h1>
+                {completed ? <p>Complete</p> : <p>In progress...</p>}
+            </div>
             <div className="game">
                 <Teams
                     editTeam={editTeam}
                     setEditTeam={setEditTeam}
                     teams={teams}
+                    completed={completed}
                 />
                 <div>
                     <Categories categories={categories} />

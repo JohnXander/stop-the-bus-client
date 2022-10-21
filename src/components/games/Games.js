@@ -5,6 +5,7 @@ import './style.css'
 const Games = ({ user }) => {
     const [games, setGames] = useState([])
     const [editGameList, setEditGameList] = useState(true)
+    const [editNameView, setEditNameView] = useState(undefined)
     const navigate = useNavigate()
 
     games.sort((a, b) => a.name.localeCompare(b.name))
@@ -32,6 +33,8 @@ const Games = ({ user }) => {
             .then(_ => setEditGameList(!editGameList))
     }
 
+    const handleEdit = (game) => setEditNameView(game.id)
+
     const handleComplete = (game) => {
         const { name, id, completed } = game
         const userId = user.id
@@ -53,19 +56,23 @@ const Games = ({ user }) => {
             <button onClick={() => handleNavigate('CREATE')}>Create New Game</button>
             {games && games.map(game => {
                 return (
-                    <div className="game-container" key={game.id}>
-                        <p
-                            className="game-item"
-                            onClick={() => handleNavigate(game)}
-                        >
-                            {game.name}
-                        </p>
-                        <button onClick={() => handleDelete(game)}>Delete</button>
-                        {
-                            game.completed ?
-                                <button onClick={() => handleComplete(game)}>Unmark as complete</button> :
-                                <button onClick={() => handleComplete(game)}>Mark as complete</button>
-                        }
+                    <div>
+                        <div className="game-container" key={game.id}>
+                            <p
+                                className="game-item"
+                                onClick={() => handleNavigate(game)}
+                            >
+                                {game.name}
+                            </p>
+                            <button onClick={() => handleDelete(game)}>Delete</button>
+                            <button onClick={() => handleEdit(game)}>Change Name</button>
+                            {
+                                game.completed ?
+                                    <button onClick={() => handleComplete(game)}>Unmark as complete</button> :
+                                    <button onClick={() => handleComplete(game)}>Mark as complete</button>
+                            }
+                        </div>
+                        {editNameView === game.id && <p>Edit Form Component</p>}
                     </div>
                 )
             })}

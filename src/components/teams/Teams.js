@@ -1,7 +1,8 @@
 import './style.css'
 
-const Teams = ({ teams, editTeam, setEditTeam }) => {
+const Teams = ({ teams, editTeam, setEditTeam, completed }) => {
     teams.sort((a, b) => a.name.localeCompare(b.name))
+    const winningPoints = Math.max(...teams.map(team => team.points))
 
     const handleClick = (team, dir) => {
         const { id, name, points, gameId } = team
@@ -25,7 +26,10 @@ const Teams = ({ teams, editTeam, setEditTeam }) => {
             {teams.map(team => {
                 return (
                     <div className='team' key={team.id}>
-                        <h3>{team.name}</h3>
+                        <h3>
+                            {team.name}
+                            {completed && team.points === winningPoints && <span> 🎉</span>}
+                        </h3>
                         <div className='points'>
                             <p>{team.points} pts</p>
                             <button onClick={() => handleClick(team, 'inc')}>+</button>

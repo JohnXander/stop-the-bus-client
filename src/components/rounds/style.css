@@ -28,3 +28,7 @@
     flex-direction: column;
     gap: 1rem;
 }
+
+.start-note {
+    margin-left: 6rem;
+}
