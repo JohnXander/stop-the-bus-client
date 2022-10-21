@@ -23,15 +23,15 @@ const CreateCategories = () => {
             .then(_ => navigate(`/games/${gameId}`, { state: { game } }))
     }
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
+    const handleChange = (e) => {
+        const { name, value } = e.target
         setFormValue((prevState) => {
             return {
                 ...prevState,
                 [name]: value,
             }
         })
-    };
+    }
 
 
     return (

@@ -11,15 +11,15 @@ const Login = () => {
         e.preventDefault()
     }
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
+    const handleChange = (e) => {
+        const { name, value } = e.target
         setFormValue((prevState) => {
             return {
                 ...prevState,
                 [name]: value,
-            };
-        });
-    };
+            }
+        })
+    }
 
     const { username, password } = formValue;
 

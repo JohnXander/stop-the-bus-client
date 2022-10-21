@@ -25,15 +25,15 @@ const CreateTeams = () => {
             .then(data => navigate('/create/categories', { state: { gameData, data } }))
     }
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
+    const handleChange = (e) => {
+        const { name, value } = e.target
         setFormValue((prevState) => {
             return {
                 ...prevState,
                 [name]: value,
             }
         })
-    };
+    }
 
     const handleClick = () => {
         setTeams(oldArray => [...oldArray, `team${teams.length + 1}`]);

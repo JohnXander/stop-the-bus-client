@@ -6,7 +6,7 @@ const MyCards = ({ user }) => {
 
     useEffect(() => {
         if (user.id !== undefined) {
-            fetch("http://localhost:4000/cards")
+            fetch(`http://localhost:4000/cards?userId=${user.id}`)
                 .then(res => res.json())
                 .then(data => setCards(data.cards))
         }
@@ -15,7 +15,6 @@ const MyCards = ({ user }) => {
     return (
         <div>
             <h1>My cards</h1>
-            {/* <button onClick={() => handleNavigate('CREATE')}>Create New Game</button> */}
             <div className="card-list">
                 {cards && cards.map(card => {
                     return (

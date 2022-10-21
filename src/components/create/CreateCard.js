@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const CreateCard = ({ addCard, setAddCard, setEditView, setRoundView, userId }) => {
+const CreateCard = ({ editCard, setEditCard, setEditView, setRoundView, userId }) => {
     const [formValue, setFormValue] = useState({ userId: +userId })
 
     const handleSubmit = (e) => {
@@ -14,21 +14,21 @@ const CreateCard = ({ addCard, setAddCard, setEditView, setRoundView, userId }) 
             body: JSON.stringify(formValue),
         })
             .then(_ => {
-                setAddCard(!addCard)
+                setEditCard(!editCard)
                 setEditView(undefined)
                 setRoundView(undefined)
             })
     }
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
+    const handleChange = (e) => {
+        const { name, value } = e.target
         setFormValue((prevState) => {
             return {
                 ...prevState,
                 [name]: value,
             }
         })
-    };
+    }
 
     return (
         <div>

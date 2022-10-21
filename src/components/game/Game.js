@@ -13,11 +13,10 @@ const Game = () => {
     const [teams, setTeams] = useState([])
     const [categories, setCategories] = useState([])
     const [rounds, setRounds] = useState([])
-    const [addRound, setAddRound] = useState(true)
-    const [updateRound, setUpdateRound] = useState(true)
-    const [deleteRound, setDeleteRound] = useState(true)
-    const [updateTeam, setUpdateTeam] = useState(true)
-    const [addCard, setAddCard] = useState(true)
+
+    const [editRound, setEditRound] = useState(true)
+    const [editTeam, setEditTeam] = useState(true)
+    const [editCard, setEditCard] = useState(true)
 
     useEffect(() => {
         if (id !== undefined) {
@@ -33,7 +32,7 @@ const Game = () => {
                 .then(res => res.json())
                 .then(data => setRounds(data.rounds))
         }
-    }, [id, addRound, updateRound, updateTeam, deleteRound, addCard])
+    }, [id, editRound, editTeam, editCard])
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -46,34 +45,32 @@ const Game = () => {
             },
             body: JSON.stringify({ letter: capitalLetter, answers: [], gameId: +id }),
         })
-            .then(_ => setAddRound(!addRound))
+            .then(_ => setEditRound(!editRound))
     }
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
+    const handleChange = (e) => {
+        const { name, value } = e.target
         setFormValue((prevState) => {
             return {
                 ...prevState,
                 [name]: value,
             }
         })
-    };
+    }
 
     return (
         <div>
             <h1 className="game-name">{name}</h1>
             <div className="game">
-                <Teams updateTeam={updateTeam} setUpdateTeam={setUpdateTeam} teams={teams} />
+                <Teams editTeam={editTeam} setEditTeam={setEditTeam} teams={teams} />
                 <div>
                     <Categories categories={categories} />
                     <Rounds
                         userId={userId}
-                        addCard={addCard}
-                        setAddCard={setAddCard}
-                        deleteRound={deleteRound}
-                        setDeleteRound={setDeleteRound}
-                        updateRound={updateRound}
-                        setUpdateRound={setUpdateRound}
+                        editCard={editCard}
+                        setEditCard={setEditCard}
+                        editRound={editRound}
+                        setEditRound={setEditRound}
                         rounds={rounds}
                     />
                     <form className="add-round" onSubmit={handleSubmit}>

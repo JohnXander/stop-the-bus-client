@@ -1,6 +1,6 @@
 import './style.css'
 
-const Teams = ({ teams, updateTeam, setUpdateTeam }) => {
+const Teams = ({ teams, editTeam, setEditTeam }) => {
     teams.sort((a, b) => a.name.localeCompare(b.name))
 
     const handleClick = (team, dir) => {
@@ -17,7 +17,7 @@ const Teams = ({ teams, updateTeam, setUpdateTeam }) => {
             },
             body: JSON.stringify({ name, points: newPoints, gameId }),
         })
-            .then(_ => setUpdateTeam(!updateTeam))
+            .then(_ => setEditTeam(!editTeam))
     }
 
     return (

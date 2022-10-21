@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './style.css'
 
-const CreateAnswers = ({ round, updateRound, setUpdateRound }) => {
+const CreateAnswers = ({ round, editRound, setEditRound }) => {
     const { id, letter, gameId } = round
     const [formValue, setFormValue] = useState({})
 
@@ -15,18 +15,18 @@ const CreateAnswers = ({ round, updateRound, setUpdateRound }) => {
             },
             body: JSON.stringify({ letter, answers: formAnswers, gameId }),
         })
-            .then(_ => setUpdateRound(!updateRound))
+            .then(_ => setEditRound(!editRound))
     }
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
+    const handleChange = (e) => {
+        const { name, value } = e.target;
         setFormValue((prevState) => {
             return {
                 ...prevState,
                 [name]: value,
             }
         })
-    };
+    }
 
     return (
         <form onSubmit={handleSubmit} className='answer-form-container'>
