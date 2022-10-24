@@ -1,19 +1,46 @@
 .header {
     display: flex;
     justify-content: space-between;
-    padding: 0 1rem;
-    border-bottom: 1px solid white;
+    padding: 0 7rem;
+    border-bottom: 1px solid #E5E5E5;
 }
 
 .app-name {
     text-decoration: none;
-    color: white;
+    color: #58CC02;
+}
+
+.app-name h3 {
+    font-size: 1.5rem;
+    font-weight: bolder;
 }
 
 .user {
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
     align-items: center;
+}
+
+.nav-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    color: #d5d5d5;
+    font-weight: bold;
+}
+
+.nav-link i {
+    font-size: 1.25rem;
+}
+
+.nav-link a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.nav-link:hover {
+    color: #737373;
 }
 
 .profile-pic {
@@ -21,4 +48,26 @@
     height: 2.5rem;
     border-radius: 100%;
     object-fit: cover;
+}
+
+.profile-info {
+    background-color: #FFFFFF;
+    position: absolute;
+    right: 7.5rem;
+    top: 4.5rem;
+    padding: 1rem 2rem;
+    border: 1px solid #E5E5E5;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.profile-info h5 {
+    margin: 0;
+}
+
+.profile-info p {
+    margin: 0;
+    font-size: 0.75rem;
 }
