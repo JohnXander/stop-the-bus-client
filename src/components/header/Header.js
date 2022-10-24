@@ -23,17 +23,17 @@ const Header = ({ user }) => {
             </a>
             <div className='user'>
                 <div className='nav-link'>
-                    <i class="fa-solid fa-chalkboard"></i>
+                    <i className="fa-solid fa-chalkboard"></i>
                     <a href="/games">GAMES</a>
                 </div>
                 <div className='nav-link'>
-                    <i class="fa-solid fa-note-sticky"></i>
+                    <i className="fa-solid fa-note-sticky"></i>
                     <a href="/cards">CARDS</a>
                 </div>
                 <img
                     className='profile-pic'
                     src={user.imgUrl}
-                    alt="profile pic"
+                    alt=""
                     onMouseOver={handleMouseOver}
                     onMouseOut={handleMouseOut}
                 />

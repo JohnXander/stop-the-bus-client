@@ -51,9 +51,17 @@ const Games = ({ user }) => {
     }
 
     return (
-        <div>
-            <h1>My games</h1>
-            <button onClick={() => handleNavigate('CREATE')}>Create New Game</button>
+        <div className="container">
+            <div className="games-header">
+                <h2 className="page-title">My Games</h2>
+                <button
+                    className="create-btn"
+                    onClick={() => handleNavigate('CREATE')}
+                >
+                    <i class="fa-solid fa-circle-plus"></i>
+                    CREATE NEW GAME
+                </button>
+            </div>
             {games && games.map(game => {
                 return (
                     <div>
