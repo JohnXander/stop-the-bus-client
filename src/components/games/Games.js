@@ -60,20 +60,20 @@ const Games = ({ user }) => {
     return (
         <div className="container">
             <div className="games-header">
-                <h2 className="page-title">My Games</h2>
+                <h1 className="page-title">My Games</h1>
                 <button
                     className="create-btn"
                     onClick={() => handleNavigate('CREATE')}
                 >
-                    <i class="fa-solid fa-circle-plus"></i>
+                    <i className="fa-solid fa-circle-plus"></i>
                     CREATE NEW GAME
                 </button>
             </div>
             {games && games.map(game => {
                 const dateParts = String(new Date(user.createdAt)).split(' ')
                 return (
-                    <div>
-                        <div className="game-container" key={game.id}>
+                    <div key={game.id}>
+                        <div className="game-container">
                             <h3
                                 className="game-item"
                                 onClick={() => handleNavigate(game)}

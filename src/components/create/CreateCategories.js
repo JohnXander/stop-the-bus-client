@@ -35,37 +35,53 @@ const CreateCategories = () => {
 
 
     return (
-        <div className="form-container">
+        <div className="game-form-container">
+            <div className='create-progress'>
+                <i className="fa-solid fa-1"></i>
+                <i className="fa-solid fa-2"></i>
+                <i style={{ color: '#1FC2FF' }} className="fa-solid fa-3"></i>
+            </div>
             <form onSubmit={handleSubmit} className='game-form'>
                 <h3>Categories</h3>
-                <div>
-                    <label>Category</label>
-                    <input name='category1' onChange={handleChange} type="text" required />
-                </div>
-                <div>
-                    <label>Category</label>
-                    <input name='category2' onChange={handleChange} type="text" required />
-                </div>
-                <div>
-                    <label>Category</label>
-                    <input name='category3' onChange={handleChange} type="text" required />
-                </div>
-                <button type='submit'>Start Game</button>
+                <input
+                    className="form-input"
+                    placeholder="Category 1..."
+                    name='category1'
+                    onChange={handleChange}
+                    type="text"
+                    required
+                />
+                <input
+                    className="form-input"
+                    placeholder="Category 2..."
+                    name='category2'
+                    onChange={handleChange}
+                    type="text"
+                    required
+                />
+                <input
+                    className="form-input"
+                    placeholder="Category 3..."
+                    name='category3'
+                    onChange={handleChange}
+                    type="text"
+                    required
+                />
+                <button className="create-btn" type='submit'>Start Game</button>
             </form>
-            <div className="game-preview">
-                <h2>Game Details</h2>
-                <h3>Name:</h3>
-                <p>{gameName}</p>
-                <div>
-                    <h3>Teams:</h3>
-                    {gameTeams.map((team, i) => {
-                        return (
-                            i !== gameTeams.length - 1 ?
-                                <span key={i}>{team.name}, </span> :
-                                <span key={i}>{team.name}</span>
-                        )
-                    })}
-                </div>
+            <div className="game-name-preview">
+                <i className="fa-solid fa-chalkboard"></i>
+                {gameName}
+            </div>
+            <div className="game-name-preview">
+                <i className="fa-solid fa-user-group"></i>
+                {gameTeams.map((team, i) => {
+                    return (
+                        i !== gameTeams.length - 1 ?
+                            <span key={i}>{team.name}, </span> :
+                            <span key={i}>{team.name}</span>
+                    )
+                })}
             </div>
         </div>
     )

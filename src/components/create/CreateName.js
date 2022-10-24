@@ -33,14 +33,23 @@ const CreateName = () => {
     }
 
     return (
-        <div>
+        <div className='game-form-container'>
+            <div className='create-progress'>
+                <i style={{ color: '#1FC2FF' }} className="fa-solid fa-1"></i>
+                <i className="fa-solid fa-2"></i>
+                <i className="fa-solid fa-3"></i>
+            </div>
             <form onSubmit={handleSubmit} className='game-form'>
                 <h3>Create New Game</h3>
-                <div>
-                    <label>Game Name</label>
-                    <input name='name' onChange={handleChange} type="text" required />
-                </div>
-                <button type='submit'>Submit</button>
+                <input
+                    className="form-input"
+                    placeholder={'Game name...'}
+                    name='name'
+                    onChange={handleChange}
+                    type="text"
+                    required
+                />
+                <button className='create-btn' type='submit'>Submit Name</button>
             </form>
         </div>
     )
