@@ -63,34 +63,38 @@ const Games = ({ user }) => {
                 </button>
             </div>
             {games && games.map(game => {
+                const dateParts = String(new Date(user.createdAt)).split(' ')
                 return (
                     <div>
                         <div className="game-container" key={game.id}>
-                            <p
+                            <h3
                                 className="game-item"
                                 onClick={() => handleNavigate(game)}
                             >
                                 {game.name}
-                            </p>
-                            {
-                                game.completed ?
-                                    <i
-                                        onClick={() => handleComplete(game)}
-                                        className="fa-solid fa-square-check check-btn">
-                                    </i> :
-                                    <i
-                                        onClick={() => handleComplete(game)}
-                                        className="fa-regular fa-square-check check-btn">
-                                    </i>
-                            }
-                            <i
-                                onClick={() => handleEdit(game)}
-                                className="fa-solid fa-pen-to-square edit-btn">
-                            </i>
-                            <i
-                                onClick={() => handleDelete(game)}
-                                className="fa-solid fa-trash-can delete-btn"
-                            ></i>
+                            </h3>
+                            <p>Created {dateParts[1]} {dateParts[3]}</p>
+                            <div className="game-list-controls">
+                                {
+                                    game.completed ?
+                                        <i
+                                            onClick={() => handleComplete(game)}
+                                            className="fa-solid fa-square-check check-btn">
+                                        </i> :
+                                        <i
+                                            onClick={() => handleComplete(game)}
+                                            className="fa-regular fa-square-check check-btn">
+                                        </i>
+                                }
+                                <i
+                                    onClick={() => handleEdit(game)}
+                                    className="fa-solid fa-pen-to-square edit-btn">
+                                </i>
+                                <i
+                                    onClick={() => handleDelete(game)}
+                                    className="fa-solid fa-trash-can delete-btn">
+                                </i>
+                            </div>
                         </div>
                         {editNameView === game.id && <p>Edit Form Component</p>}
                     </div>

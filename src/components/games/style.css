@@ -1,5 +1,5 @@
 .container {
-    padding: 0 7rem;
+    padding: 0 21rem;
 }
 
 .games-header {
@@ -7,6 +7,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 2rem;
 }
 
 .create-btn {
@@ -31,8 +32,27 @@
 
 .game-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 1rem;
+    border: 1px solid #E5E5E5;
+    border-radius: 20px;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+}
+
+.game-container h3 {
+    margin: 0;
+}
+
+.game-container p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.game-list-controls {
+    display: flex;
+    gap: 2rem;
 }
 
 .game-container i {

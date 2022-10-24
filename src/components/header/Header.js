@@ -4,6 +4,9 @@ import './style.css'
 const Header = ({ user }) => {
     const [isHovering, setIsHovering] = useState(false)
     const [totalGames, setTotalGames] = useState(0)
+    const [totalCards, setTotalCards] = useState(0)
+
+    const dateParts = String(new Date(user.createdAt)).split(' ')
 
     const handleMouseOver = () => setIsHovering(true)
     const handleMouseOut = () => setIsHovering(false)
@@ -13,6 +16,10 @@ const Header = ({ user }) => {
             fetch(`http://localhost:4000/games?userId=${user.id}`)
                 .then(res => res.json())
                 .then(data => setTotalGames(data.games.length))
+
+            fetch(`http://localhost:4000/cards?userId=${user.id}`)
+                .then(res => res.json())
+                .then(data => setTotalCards(data.cards.length))
         }
     }, [user.id])
 
@@ -45,7 +52,9 @@ const Header = ({ user }) => {
                         className='profile-info'
                     >
                         <h5>{user.username}</h5>
+                        <p>Joined {dateParts[1]} {dateParts[3]}</p>
                         <p>Total Games: {totalGames}</p>
+                        <p>Total Cards: {totalCards}</p>
                     </div>
                 }
             </div>
