@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import EditGame from "../edit/EditGame"
 import './style.css'
 
 const Games = ({ user }) => {
@@ -95,8 +96,14 @@ const Games = ({ user }) => {
                                     className="fa-solid fa-trash-can delete-btn">
                                 </i>
                             </div>
+                            {editNameView === game.id &&
+                                <EditGame
+                                    game={game}
+                                    setEditNameView={setEditNameView}
+                                    editGameList={editGameList}
+                                    setEditGameList={setEditGameList}
+                                />}
                         </div>
-                        {editNameView === game.id && <p>Edit Form Component</p>}
                     </div>
                 )
             })}
