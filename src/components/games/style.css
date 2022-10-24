@@ -35,8 +35,25 @@
     gap: 1rem;
 }
 
+.game-container i {
+    cursor: pointer;
+}
+
 .game-item:hover {
     cursor: pointer;
     text-decoration: underline;
     width: fit-content;
+}
+
+.check-btn {
+    color: #58CC02;
+}
+
+.delete-btn {
+    color: #FF4B4B;
+    cursor: pointer;
+}
+
+.edit-btn {
+    color: #1FC2FF;
 }

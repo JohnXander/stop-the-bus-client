@@ -72,13 +72,25 @@ const Games = ({ user }) => {
                             >
                                 {game.name}
                             </p>
-                            <button onClick={() => handleDelete(game)}>Delete</button>
-                            <button onClick={() => handleEdit(game)}>Change Name</button>
                             {
                                 game.completed ?
-                                    <button onClick={() => handleComplete(game)}>Unmark as complete</button> :
-                                    <button onClick={() => handleComplete(game)}>Mark as complete</button>
+                                    <i
+                                        onClick={() => handleComplete(game)}
+                                        className="fa-solid fa-square-check check-btn">
+                                    </i> :
+                                    <i
+                                        onClick={() => handleComplete(game)}
+                                        className="fa-regular fa-square-check check-btn">
+                                    </i>
                             }
+                            <i
+                                onClick={() => handleEdit(game)}
+                                className="fa-solid fa-pen-to-square edit-btn">
+                            </i>
+                            <i
+                                onClick={() => handleDelete(game)}
+                                className="fa-solid fa-trash-can delete-btn"
+                            ></i>
                         </div>
                         {editNameView === game.id && <p>Edit Form Component</p>}
                     </div>
