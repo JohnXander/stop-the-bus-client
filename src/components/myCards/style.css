@@ -4,6 +4,26 @@
 
 .cards-title {
     text-align: center;
+    margin-bottom: 0;
+}
+
+.sort-container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.sort-container h4 {
+    margin: 0;
+}
+
+.sort-container p {
+    cursor: pointer;
+}
+
+.active-category {
+    text-decoration: underline;
 }
 
 .card-list {
