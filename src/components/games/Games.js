@@ -60,7 +60,7 @@ const Games = ({ user }) => {
     return (
         <div className="container">
             <div className="games-header">
-                <h1 className="page-title">My Games</h1>
+                <h1>My Games</h1>
                 <button
                     className="create-btn"
                     onClick={() => handleNavigate('CREATE')}

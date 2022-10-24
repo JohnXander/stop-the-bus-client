@@ -13,10 +13,11 @@ const MyCards = ({ user }) => {
     }, [user.id])
 
     return (
-        <div>
-            <h1>My cards</h1>
+        <div className="wide-container">
+            <h1 className="cards-title">My cards</h1>
             <div className="card-list">
                 {cards && cards.map(card => {
+                    const cardWord = card.word[0].toUpperCase() + card.word.substring(1)
                     return (
                         <div key={card.id} className="card">
                             <div className='img-container'>
@@ -25,7 +26,7 @@ const MyCards = ({ user }) => {
                                     alt={card.imgUrl.length ? card.imgUrl : 'not selected'}
                                 />
                             </div>
-                            <h3>{card.word}</h3>
+                            <h3>{cardWord}</h3>
                             <p>{card.type}</p>
                         </div>
                     )
