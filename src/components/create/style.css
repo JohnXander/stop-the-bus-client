@@ -45,11 +45,17 @@
     cursor: pointer;
 }
 
+.game-preview {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-left: 4.5rem;
+}
+
 .game-name-preview {
     display: flex;
     gap: 0.5rem;
     align-items: center;
-    margin-left: 2rem;
 }
 
 .answer-form-container {

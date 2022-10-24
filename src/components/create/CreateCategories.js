@@ -69,19 +69,21 @@ const CreateCategories = () => {
                 />
                 <button className="create-btn" type='submit'>Start Game</button>
             </form>
-            <div className="game-name-preview">
-                <i className="fa-solid fa-chalkboard"></i>
-                {gameName}
-            </div>
-            <div className="game-name-preview">
-                <i className="fa-solid fa-user-group"></i>
-                {gameTeams.map((team, i) => {
-                    return (
-                        i !== gameTeams.length - 1 ?
-                            <span key={i}>{team.name}, </span> :
-                            <span key={i}>{team.name}</span>
-                    )
-                })}
+            <div className="game-preview">
+                <div className="game-name-preview">
+                    <i className="fa-solid fa-chalkboard"></i>
+                    {gameName}
+                </div>
+                <div className="game-name-preview">
+                    <i className="fa-solid fa-user-group"></i>
+                    {gameTeams.map((team, i) => {
+                        return (
+                            i !== gameTeams.length - 1 ?
+                                <span key={i}>{team.name}, </span> :
+                                <span key={i}>{team.name}</span>
+                        )
+                    })}
+                </div>
             </div>
         </div>
     )

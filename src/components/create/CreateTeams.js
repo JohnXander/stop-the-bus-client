@@ -77,9 +77,11 @@ const CreateTeams = () => {
                 </div>
                 <button className="create-btn" type='submit'>Submit Teams</button>
             </form>
-            <div className="game-name-preview">
-                <i className="fa-solid fa-chalkboard"></i>
-                {gameName}
+            <div className="game-preview">
+                <div className="game-name-preview">
+                    <i className="fa-solid fa-chalkboard"></i>
+                    {gameName}
+                </div>
             </div>
         </div>
     )
