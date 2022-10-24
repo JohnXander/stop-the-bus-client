@@ -1,0 +1,16 @@
+.edit-game-form {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 5rem;
+    border: 3px solid #1FC2FF;
+    gap: 1rem;
+    border-radius: 20px;
+}
+
+.form-input {
+    border: none;
+    border-bottom: 3px solid #1FC2FF;
+    outline: none;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+}

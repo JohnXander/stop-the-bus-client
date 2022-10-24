@@ -1,4 +1,5 @@
 import { useState } from "react"
+import './style.css'
 
 const EditGame = ({ game, setEditNameView, editGameList, setEditGameList }) => {
     const [formValue, setFormValue] = useState({})
@@ -30,10 +31,15 @@ const EditGame = ({ game, setEditNameView, editGameList, setEditGameList }) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>Game Name</label>
-            <input name="name" onChange={handleChange} type="text" />
-            <button type="submit">Submit Name</button>
+        <form className="edit-game-form" onSubmit={handleSubmit}>
+            <input
+                className="form-input"
+                name="name"
+                onChange={handleChange}
+                type="text"
+                placeholder={'New game name...'}
+            />
+            <button type="submit" className="create-btn">SUBMIT NAME</button>
         </form>
     )
 }

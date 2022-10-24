@@ -34,7 +34,13 @@ const Games = ({ user }) => {
             .then(_ => setEditGameList(!editGameList))
     }
 
-    const handleEdit = (game) => setEditNameView(game.id)
+    const handleEdit = (game) => {
+        if (editNameView !== game.id) {
+            setEditNameView(game.id)
+        } else {
+            setEditNameView(undefined)
+        }
+    }
 
     const handleComplete = (game) => {
         const { name, id, completed } = game
