@@ -1,11 +1,20 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './style.css'
 
 const Header = ({ user }) => {
     const [isHovering, setIsHovering] = useState(false)
+    const [totalGames, setTotalGames] = useState(0)
 
     const handleMouseOver = () => setIsHovering(true)
     const handleMouseOut = () => setIsHovering(false)
+
+    useEffect(() => {
+        if (user.id !== undefined) {
+            fetch(`http://localhost:4000/games?userId=${user.id}`)
+                .then(res => res.json())
+                .then(data => setTotalGames(data.games.length))
+        }
+    }, [user.id])
 
     return (
         <div className='header'>
@@ -36,7 +45,7 @@ const Header = ({ user }) => {
                         className='profile-info'
                     >
                         <h5>{user.username}</h5>
-                        <p>Total Games:</p>
+                        <p>Total Games: {totalGames}</p>
                     </div>
                 }
             </div>
