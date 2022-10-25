@@ -4,6 +4,8 @@ import './style.css'
 const MyCards = ({ user }) => {
     const [cards, setCards] = useState([])
     const [sortCategory, setSortCategory] = useState('NEW')
+    const [editCardView, setEditCardView] = useState(false)
+    const [formValue, setFormValue] = useState({ userId: +user.id })
 
     useEffect(() => {
         if (user.id !== undefined) {
@@ -19,7 +21,40 @@ const MyCards = ({ user }) => {
                     }
                 })
         }
-    }, [user.id, sortCategory])
+    }, [user.id, sortCategory, editCardView])
+
+    const handleClick = () => setEditCardView(!editCardView)
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        formValue.word = formValue.word.toLowerCase()
+        formValue.type = formValue.type.toLowerCase()
+
+        fetch('http://localhost:4000/cards', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formValue),
+        })
+            .then(_ => {
+                console.log('done')
+                setEditCardView(!editCardView)
+                // displayCards(roundIndex)
+                // setEditView(undefined)
+            })
+    }
+
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        setFormValue((prevState) => {
+            return {
+                ...prevState,
+                [name]: value,
+            }
+        })
+    }
 
     return (
         <div className="wide-container">
@@ -46,6 +81,40 @@ const MyCards = ({ user }) => {
                 </p>
             </div>
             <div className="card-list">
+                {
+                    editCardView ?
+                        <form onSubmit={handleSubmit} className="card create-my-card">
+                            <i onClick={handleClick} class="fa-solid fa-circle-xmark"></i>
+                            <input
+                                onChange={handleChange}
+                                className="form-input"
+                                placeholder="Image URL..."
+                                name="imgUrl"
+                                type="text"
+                                required
+                            />
+                            <input
+                                onChange={handleChange}
+                                className="form-input"
+                                placeholder="Word..."
+                                name="word"
+                                type="text"
+                                required
+                            />
+                            <input
+                                onChange={handleChange}
+                                className="form-input"
+                                placeholder="Word Type..."
+                                name="type"
+                                type="text"
+                                required
+                            />
+                            <button type="submit" className="create-btn">Submit Card</button>
+                        </form> :
+                        <div onClick={handleClick} className="card create-card">
+                            <i className="fa-solid fa-circle-plus"></i>
+                        </div>
+                }
                 {cards && cards.map(card => {
                     const cardWord = card.word[0].toUpperCase() + card.word.substring(1)
                     return (

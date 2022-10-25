@@ -23,7 +23,14 @@ const Rounds = ({ rounds, userId, editRound, setEditRound }) => {
     }
 
     const handleHide = () => setRoundView(undefined)
-    const handleEdit = (roundId) => setEditView(roundId)
+
+    const handleEdit = (roundId) => {
+        if (editView === roundId) {
+            setEditView(undefined)
+        } else {
+            setEditView(roundId)
+        }
+    }
 
     const handleDelete = (roundId) => {
         fetch(`http://localhost:4000/rounds/${roundId}`, {
@@ -81,7 +88,7 @@ const Rounds = ({ rounds, userId, editRound, setEditRound }) => {
                                     <div className='cards-control'>
                                         <i
                                             onClick={handleHide}
-                                            class="fa-solid fa-eye-slash check-btn">
+                                            className="fa-solid fa-eye-slash check-btn">
                                         </i>
                                         <i
                                             onClick={() => handleEdit(round.id)}
