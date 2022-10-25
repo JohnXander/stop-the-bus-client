@@ -1,5 +1,6 @@
 .gameplay-container {
     padding: 0 7rem;
+    margin-bottom: 5rem;
 }
 
 .gameplay-container i {
@@ -15,7 +16,7 @@
 }
 
 .add-round {
-    border-top: 1px solid white;
+    border-top: 1px solid #E5E5E5;
     padding: 1rem;
     display: flex;
     justify-content: center;

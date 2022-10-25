@@ -30,19 +30,35 @@ const CreateAnswers = ({ round, editRound, setEditRound }) => {
 
     return (
         <form onSubmit={handleSubmit} className='answer-form-container'>
-            <p>Answers:</p>
             <div className='answer-forms'>
-                <div className='answer-form'>
-                    <input name='word1' onChange={handleChange} type="text" required />
-                </div>
-                <div className='answer-form'>
-                    <input name='word2' onChange={handleChange} type="text" required />
-                </div>
-                <div className='answer-form'>
-                    <input name='word3' onChange={handleChange} type="text" required />
-                </div>
+                <input
+                    className='form-input'
+                    placeholder='Answer 1...'
+                    name='word1'
+                    onChange={handleChange}
+                    type="text"
+                    required
+                />
+                <input
+                    className='form-input'
+                    placeholder='Answer 2...'
+                    name='word2'
+                    onChange={handleChange}
+                    type="text"
+                    required
+                />
+                <input
+                    className='form-input'
+                    placeholder='Answer 3...'
+                    name='word3'
+                    onChange={handleChange}
+                    type="text"
+                    required
+                />
             </div>
-            <button type='submit'>Submit Answers</button>
+            <div className='btn-container'>
+                <button className='create-btn' type='submit'>Submit Answers</button>
+            </div>
         </form>
     )
 }

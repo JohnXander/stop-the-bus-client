@@ -59,11 +59,19 @@
 }
 
 .answer-form-container {
+    background-color: #fff;
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    padding: 1rem 0;
+    padding: 2rem 0;
+    border: 3px solid #1FC2FF;
+    margin: 1rem 1.5rem;
+    border-radius: 20px;
+}
+
+.answer-form-container:hover {
+    background-color: #fff;
 }
 
 .answer-form-container p {
@@ -72,7 +80,7 @@
 
 .answer-forms {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .answer-form {
@@ -80,6 +88,11 @@
     flex-direction: column;
 }
 
+.btn-container {
+    display: flex;
+    justify-content: center;
+}
+
 .answer-form-container button {
-    width: 10rem;
+    width: 20rem;
 }
