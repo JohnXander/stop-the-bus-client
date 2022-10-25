@@ -128,7 +128,6 @@ const MyCards = ({ user }) => {
                         const cardWord = card.word[0].toUpperCase() + card.word.substring(1)
                         return (
                             <div key={card.id} className="card">
-                                <i className="fa-solid fa-pen-to-square edit-btn edit-card-btn"></i>
                                 <i
                                     onClick={() => handleDelete(card.id)}
                                     className="fa-solid fa-trash-can delete-btn delete-card-btn">

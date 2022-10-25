@@ -79,12 +79,6 @@
     position: relative;
 }
 
-.edit-card-btn {
-    position: absolute;
-    bottom: 1rem;
-    right: 2.75rem;
-}
-
 .delete-card-btn {
     position: absolute;
     bottom: 1rem;
