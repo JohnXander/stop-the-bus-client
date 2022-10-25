@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
+import Header from "../header/Header"
 
-const CreateTeams = () => {
+const CreateTeams = ({ user }) => {
     const location = useLocation()
     const navigate = useNavigate()
     const gameData = location.state.data.game
@@ -50,40 +51,43 @@ const CreateTeams = () => {
     }
 
     return (
-        <div className="game-form-container">
-            <div className='create-progress'>
-                <i className="fa-solid fa-1"></i>
-                <i style={{ color: '#1FC2FF' }} className="fa-solid fa-2"></i>
-                <i className="fa-solid fa-3"></i>
-            </div>
-            <form onSubmit={handleSubmit} className='game-form'>
-                <h3>Teams</h3>
-                {teams.map((team, i) => {
-                    return (
-                        <input
-                            key={i}
-                            className="form-input"
-                            placeholder="Team Name..."
-                            name={team}
-                            onChange={handleChange}
-                            type="text"
-                            required
-                        />
-                    )
-                })}
-                <div className="teams-amount">
-                    <i onClick={() => handleClick('INC')} className="fa-solid fa-circle-plus"></i>
-                    <i onClick={() => handleClick('DEC')} className="fa-solid fa-circle-minus"></i>
+        <>
+            <Header user={user} />
+            <div className="game-form-container">
+                <div className='create-progress'>
+                    <i className="fa-solid fa-1"></i>
+                    <i style={{ color: '#1FC2FF' }} className="fa-solid fa-2"></i>
+                    <i className="fa-solid fa-3"></i>
                 </div>
-                <button className="create-btn" type='submit'>Submit Teams</button>
-            </form>
-            <div className="game-preview">
-                <div className="game-name-preview">
-                    <i className="fa-solid fa-chalkboard"></i>
-                    {gameName}
+                <form onSubmit={handleSubmit} className='game-form'>
+                    <h3>Teams</h3>
+                    {teams.map((team, i) => {
+                        return (
+                            <input
+                                key={i}
+                                className="form-input"
+                                placeholder="Team Name..."
+                                name={team}
+                                onChange={handleChange}
+                                type="text"
+                                required
+                            />
+                        )
+                    })}
+                    <div className="teams-amount">
+                        <i onClick={() => handleClick('INC')} className="fa-solid fa-circle-plus"></i>
+                        <i onClick={() => handleClick('DEC')} className="fa-solid fa-circle-minus"></i>
+                    </div>
+                    <button className="create-btn" type='submit'>Submit Teams</button>
+                </form>
+                <div className="game-preview">
+                    <div className="game-name-preview">
+                        <i className="fa-solid fa-chalkboard"></i>
+                        {gameName}
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

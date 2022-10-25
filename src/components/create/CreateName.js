@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Header from '../header/Header';
 import './style.css'
 
-const CreateName = () => {
+const CreateName = ({ user }) => {
     const location = useLocation()
     const navigate = useNavigate()
     const userId = location.state.user.id
@@ -33,25 +34,28 @@ const CreateName = () => {
     }
 
     return (
-        <div className='game-form-container'>
-            <div className='create-progress'>
-                <i style={{ color: '#1FC2FF' }} className="fa-solid fa-1"></i>
-                <i className="fa-solid fa-2"></i>
-                <i className="fa-solid fa-3"></i>
+        <>
+            <Header user={user} />
+            <div className='game-form-container'>
+                <div className='create-progress'>
+                    <i style={{ color: '#1FC2FF' }} className="fa-solid fa-1"></i>
+                    <i className="fa-solid fa-2"></i>
+                    <i className="fa-solid fa-3"></i>
+                </div>
+                <form onSubmit={handleSubmit} className='game-form'>
+                    <h3>Create New Game</h3>
+                    <input
+                        className="form-input"
+                        placeholder={'Game name...'}
+                        name='name'
+                        onChange={handleChange}
+                        type="text"
+                        required
+                    />
+                    <button className='create-btn' type='submit'>Submit Name</button>
+                </form>
             </div>
-            <form onSubmit={handleSubmit} className='game-form'>
-                <h3>Create New Game</h3>
-                <input
-                    className="form-input"
-                    placeholder={'Game name...'}
-                    name='name'
-                    onChange={handleChange}
-                    type="text"
-                    required
-                />
-                <button className='create-btn' type='submit'>Submit Name</button>
-            </form>
-        </div>
+        </>
     )
 }
 

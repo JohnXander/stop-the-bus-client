@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './style.css'
 
-const Header = ({ user }) => {
+const Header = ({ user, pageNav }) => {
     const [isHovering, setIsHovering] = useState(false)
     const [totalGames, setTotalGames] = useState(0)
     const [totalCards, setTotalCards] = useState(0)
+    const navigate = useNavigate()
+
+    console.log('cabbage', pageNav)
 
     const dateParts = String(new Date(user.createdAt)).split(' ')
 
@@ -23,19 +27,21 @@ const Header = ({ user }) => {
         }
     }, [user.id])
 
+    const handleNavigate = (path) => navigate(path, { state: path.substring(1) })
+
     return (
         <div className='header'>
             <a className='app-name' href="/">
                 <h3>Stop the Bus</h3>
             </a>
             <div className='user'>
-                <div className='nav-link'>
+                <div className='nav-link' style={pageNav === 'games' ? { color: '#737373' } : { color: '#d5d5d5' }}>
                     <i className="fa-solid fa-chalkboard"></i>
-                    <a href="/games">GAMES</a>
+                    <p onClick={() => handleNavigate('/games')}>GAMES</p>
                 </div>
-                <div className='nav-link'>
+                <div className='nav-link' style={pageNav === 'cards' ? { color: '#737373' } : { color: '#d5d5d5' }}>
                     <i className="fa-solid fa-note-sticky"></i>
-                    <a href="/cards">CARDS</a>
+                    <p onClick={() => handleNavigate('/cards')}>CARDS</p>
                 </div>
                 <img
                     className='profile-pic'

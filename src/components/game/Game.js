@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
 import Categories from "../categories/Categories"
+import Header from "../header/Header"
 import Rounds from "../rounds/Rounds"
 import Teams from "../teams/Teams"
 import './style.css'
 
-const Game = () => {
+const Game = ({ user }) => {
     const location = useLocation()
     const { id, name, completed, userId } = location.state.game
     const [formValue, setFormValue] = useState({})
@@ -58,41 +59,44 @@ const Game = () => {
     }
 
     return (
-        <div className="gameplay-container">
-            <div className="game-header">
-                <h1 className="game-name">{name}</h1>
-                {completed ? <p>Completed!</p> : <p>In progress...</p>}
-            </div>
-            <div className="game">
-                <Teams
-                    editTeam={editTeam}
-                    setEditTeam={setEditTeam}
-                    teams={teams}
-                    completed={completed}
-                />
-                <div>
-                    <Categories categories={categories} />
-                    <Rounds
-                        userId={userId}
-                        editRound={editRound}
-                        setEditRound={setEditRound}
-                        rounds={rounds}
+        <>
+            <Header user={user} />
+            <div className="gameplay-container">
+                <div className="game-header">
+                    <h1 className="game-name">{name}</h1>
+                    {completed ? <p>Completed!</p> : <p>In progress...</p>}
+                </div>
+                <div className="game">
+                    <Teams
+                        editTeam={editTeam}
+                        setEditTeam={setEditTeam}
+                        teams={teams}
+                        completed={completed}
                     />
-                    <form className="add-round" onSubmit={handleSubmit}>
-                        <input
-                            className="form-input"
-                            placeholder="New round..."
-                            name='round'
-                            onChange={handleChange}
-                            type="text"
-                            maxLength={1}
-                            required
+                    <div>
+                        <Categories categories={categories} />
+                        <Rounds
+                            userId={userId}
+                            editRound={editRound}
+                            setEditRound={setEditRound}
+                            rounds={rounds}
                         />
-                        <button className="create-btn" type="submit">Submit Round</button>
-                    </form>
+                        <form className="add-round" onSubmit={handleSubmit}>
+                            <input
+                                className="form-input"
+                                placeholder="New round..."
+                                name='round'
+                                onChange={handleChange}
+                                type="text"
+                                maxLength={1}
+                                required
+                            />
+                            <button className="create-btn" type="submit">Submit Round</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

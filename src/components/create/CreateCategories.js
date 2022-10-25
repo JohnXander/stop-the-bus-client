@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
+import Header from "../header/Header"
 
-const CreateCategories = () => {
+const CreateCategories = ({ user }) => {
     const location = useLocation()
     const navigate = useNavigate()
     const game = location.state.gameData
@@ -35,57 +36,60 @@ const CreateCategories = () => {
 
 
     return (
-        <div className="game-form-container">
-            <div className='create-progress'>
-                <i className="fa-solid fa-1"></i>
-                <i className="fa-solid fa-2"></i>
-                <i style={{ color: '#1FC2FF' }} className="fa-solid fa-3"></i>
-            </div>
-            <form onSubmit={handleSubmit} className='game-form'>
-                <h3>Categories</h3>
-                <input
-                    className="form-input"
-                    placeholder="Category 1..."
-                    name='category1'
-                    onChange={handleChange}
-                    type="text"
-                    required
-                />
-                <input
-                    className="form-input"
-                    placeholder="Category 2..."
-                    name='category2'
-                    onChange={handleChange}
-                    type="text"
-                    required
-                />
-                <input
-                    className="form-input"
-                    placeholder="Category 3..."
-                    name='category3'
-                    onChange={handleChange}
-                    type="text"
-                    required
-                />
-                <button className="create-btn" type='submit'>Start Game</button>
-            </form>
-            <div className="game-preview">
-                <div className="game-name-preview">
-                    <i className="fa-solid fa-chalkboard"></i>
-                    {gameName}
+        <>
+            <Header user={user} />
+            <div className="game-form-container">
+                <div className='create-progress'>
+                    <i className="fa-solid fa-1"></i>
+                    <i className="fa-solid fa-2"></i>
+                    <i style={{ color: '#1FC2FF' }} className="fa-solid fa-3"></i>
                 </div>
-                <div className="game-name-preview">
-                    <i className="fa-solid fa-user-group"></i>
-                    {gameTeams.map((team, i) => {
-                        return (
-                            i !== gameTeams.length - 1 ?
-                                <span key={i}>{team.name}, </span> :
-                                <span key={i}>{team.name}</span>
-                        )
-                    })}
+                <form onSubmit={handleSubmit} className='game-form'>
+                    <h3>Categories</h3>
+                    <input
+                        className="form-input"
+                        placeholder="Category 1..."
+                        name='category1'
+                        onChange={handleChange}
+                        type="text"
+                        required
+                    />
+                    <input
+                        className="form-input"
+                        placeholder="Category 2..."
+                        name='category2'
+                        onChange={handleChange}
+                        type="text"
+                        required
+                    />
+                    <input
+                        className="form-input"
+                        placeholder="Category 3..."
+                        name='category3'
+                        onChange={handleChange}
+                        type="text"
+                        required
+                    />
+                    <button className="create-btn" type='submit'>Start Game</button>
+                </form>
+                <div className="game-preview">
+                    <div className="game-name-preview">
+                        <i className="fa-solid fa-chalkboard"></i>
+                        {gameName}
+                    </div>
+                    <div className="game-name-preview">
+                        <i className="fa-solid fa-user-group"></i>
+                        {gameTeams.map((team, i) => {
+                            return (
+                                i !== gameTeams.length - 1 ?
+                                    <span key={i}>{team.name}, </span> :
+                                    <span key={i}>{team.name}</span>
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

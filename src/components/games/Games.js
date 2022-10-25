@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import EditGame from "../edit/EditGame"
+import Header from "../header/Header"
 import './style.css'
 
 const Games = ({ user }) => {
+    const location = useLocation()
     const [games, setGames] = useState([])
     const [editGameList, setEditGameList] = useState(true)
     const [editNameView, setEditNameView] = useState(undefined)
     const navigate = useNavigate()
+    const pageNav = location.state
 
     games.sort((a, b) => a.name.localeCompare(b.name))
 
@@ -58,62 +61,65 @@ const Games = ({ user }) => {
     }
 
     return (
-        <div className="container">
-            <div className="games-header">
-                <h1>My Games</h1>
-                <button
-                    className="create-btn"
-                    onClick={() => handleNavigate('CREATE')}
-                >
-                    <i className="fa-solid fa-circle-plus"></i>
-                    CREATE NEW GAME
-                </button>
-            </div>
-            {games && games.map(game => {
-                const dateParts = String(new Date(user.createdAt)).split(' ')
-                return (
-                    <div key={game.id}>
-                        <div className="game-container">
-                            <h3
-                                className="game-item"
-                                onClick={() => handleNavigate(game)}
-                            >
-                                {game.name}
-                            </h3>
-                            <p>Created {dateParts[1]} {dateParts[3]}</p>
-                            <div className="game-list-controls">
-                                {
-                                    game.completed ?
-                                        <i
-                                            onClick={() => handleComplete(game)}
-                                            className="fa-solid fa-square-check check-btn">
-                                        </i> :
-                                        <i
-                                            onClick={() => handleComplete(game)}
-                                            className="fa-regular fa-square-check check-btn">
-                                        </i>
-                                }
-                                <i
-                                    onClick={() => handleEdit(game)}
-                                    className="fa-solid fa-pen-to-square edit-btn">
-                                </i>
-                                <i
-                                    onClick={() => handleDelete(game)}
-                                    className="fa-solid fa-trash-can delete-btn">
-                                </i>
+        <>
+            <Header user={user} pageNav={pageNav} />
+            <div className="container">
+                <div className="games-header">
+                    <h1>My Games</h1>
+                    <button
+                        className="create-btn"
+                        onClick={() => handleNavigate('CREATE')}
+                    >
+                        <i className="fa-solid fa-circle-plus"></i>
+                        CREATE NEW GAME
+                    </button>
+                </div>
+                {games && games.map(game => {
+                    const dateParts = String(new Date(user.createdAt)).split(' ')
+                    return (
+                        <div key={game.id}>
+                            <div className="game-container">
+                                <h3
+                                    className="game-item"
+                                    onClick={() => handleNavigate(game)}
+                                >
+                                    {game.name}
+                                </h3>
+                                <p>Created {dateParts[1]} {dateParts[3]}</p>
+                                <div className="game-list-controls">
+                                    {
+                                        game.completed ?
+                                            <i
+                                                onClick={() => handleComplete(game)}
+                                                className="fa-solid fa-square-check check-btn">
+                                            </i> :
+                                            <i
+                                                onClick={() => handleComplete(game)}
+                                                className="fa-regular fa-square-check check-btn">
+                                            </i>
+                                    }
+                                    <i
+                                        onClick={() => handleEdit(game)}
+                                        className="fa-solid fa-pen-to-square edit-btn">
+                                    </i>
+                                    <i
+                                        onClick={() => handleDelete(game)}
+                                        className="fa-solid fa-trash-can delete-btn">
+                                    </i>
+                                </div>
+                                {editNameView === game.id &&
+                                    <EditGame
+                                        game={game}
+                                        setEditNameView={setEditNameView}
+                                        editGameList={editGameList}
+                                        setEditGameList={setEditGameList}
+                                    />}
                             </div>
-                            {editNameView === game.id &&
-                                <EditGame
-                                    game={game}
-                                    setEditNameView={setEditNameView}
-                                    editGameList={editGameList}
-                                    setEditGameList={setEditGameList}
-                                />}
                         </div>
-                    </div>
-                )
-            })}
-        </div>
+                    )
+                })}
+            </div>
+        </>
     )
 }
 
