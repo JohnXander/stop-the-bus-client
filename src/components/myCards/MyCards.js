@@ -8,6 +8,7 @@ const MyCards = ({ user }) => {
     const [cards, setCards] = useState([])
     const [sortCategory, setSortCategory] = useState('NEW')
     const [editCardView, setEditCardView] = useState(false)
+    const [editCards, setEditCards] = useState(false)
     const [formValue, setFormValue] = useState({ userId: +user.id })
     const pageNav = location.state
 
@@ -25,7 +26,7 @@ const MyCards = ({ user }) => {
                     }
                 })
         }
-    }, [user.id, sortCategory, editCardView])
+    }, [user.id, sortCategory, editCardView, editCards])
 
     const handleClick = () => setEditCardView(!editCardView)
 
@@ -42,12 +43,7 @@ const MyCards = ({ user }) => {
             },
             body: JSON.stringify(formValue),
         })
-            .then(_ => {
-                console.log('done')
-                setEditCardView(!editCardView)
-                // displayCards(roundIndex)
-                // setEditView(undefined)
-            })
+            .then(_ => setEditCardView(!editCardView))
     }
 
     const handleChange = (e) => {
@@ -58,6 +54,13 @@ const MyCards = ({ user }) => {
                 [name]: value,
             }
         })
+    }
+
+    const handleDelete = (cardId) => {
+        fetch(`http://localhost:4000/cards/${cardId}`, {
+            method: 'DELETE'
+        })
+            .then(_ => setEditCards(!editCards))
     }
 
     return (
@@ -125,6 +128,11 @@ const MyCards = ({ user }) => {
                         const cardWord = card.word[0].toUpperCase() + card.word.substring(1)
                         return (
                             <div key={card.id} className="card">
+                                <i className="fa-solid fa-pen-to-square edit-btn edit-card-btn"></i>
+                                <i
+                                    onClick={() => handleDelete(card.id)}
+                                    className="fa-solid fa-trash-can delete-btn delete-card-btn">
+                                </i>
                                 <div className='img-container'>
                                     <img
                                         src={card.imgUrl}

@@ -1,5 +1,6 @@
 .wide-container {
     padding: 0 7rem;
+    margin-bottom: 5rem;
 }
 
 .wide-container i {
@@ -75,6 +76,19 @@
     border-radius: 10px;
     margin: 0 0 0.5rem 0;
     width: 15rem;
+    position: relative;
+}
+
+.edit-card-btn {
+    position: absolute;
+    bottom: 1rem;
+    right: 2.75rem;
+}
+
+.delete-card-btn {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
 }
 
 .img-container {
