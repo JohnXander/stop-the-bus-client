@@ -1,7 +1,7 @@
 .categories {
     border-bottom: 1px solid #E5E5E5;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 50rem;
     margin-left: 5rem;
 }

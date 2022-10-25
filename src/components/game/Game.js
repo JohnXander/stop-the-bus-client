@@ -79,9 +79,16 @@ const Game = () => {
                         rounds={rounds}
                     />
                     <form className="add-round" onSubmit={handleSubmit}>
-                        <label>Add New Round:</label>
-                        <input name='round' onChange={handleChange} type="text" maxLength={1} required />
-                        <button type="submit">Submit Round</button>
+                        <input
+                            className="form-input"
+                            placeholder="New round..."
+                            name='round'
+                            onChange={handleChange}
+                            type="text"
+                            maxLength={1}
+                            required
+                        />
+                        <button className="create-btn" type="submit">Submit Round</button>
                     </form>
                 </div>
             </div>

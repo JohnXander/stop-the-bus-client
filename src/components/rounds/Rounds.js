@@ -42,7 +42,7 @@ const Rounds = ({ rounds, userId, editRound, setEditRound }) => {
                         {
                             round.id === roundView && roundView !== undefined ?
                                 <div
-                                    style={{ backgroundColor: 'grey' }}
+                                    style={{ backgroundColor: '#E5E5E5' }}
                                     className='answers'
                                 >
                                     <Cards
@@ -61,7 +61,8 @@ const Rounds = ({ rounds, userId, editRound, setEditRound }) => {
                                     onClick={() => handleClick(round, idx)}
                                 >
                                     {round.answers.length ? round.answers.map((answer, i) => {
-                                        return <p key={i}>{answer}</p>
+                                        const wordAnswer = answer[0].toUpperCase() + answer.substring(1)
+                                        return <p key={i}>{wordAnswer}</p>
                                     }) :
                                         <CreateAnswers
                                             editRound={editRound}

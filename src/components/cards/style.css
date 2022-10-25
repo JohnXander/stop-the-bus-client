@@ -22,3 +22,7 @@
 .card p {
     padding-left: 1rem;
 }
+
+.gameplay-card {
+    margin-bottom: 0 !important;
+}
