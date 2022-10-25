@@ -33,16 +33,34 @@ const CreateCard = ({ userId, displayCards, roundIndex, setEditView }) => {
     }
 
     return (
-        <div>
-            <h3>Add your card to the database:</h3>
-            <form onSubmit={handleSubmit}>
-                <label>Image URL</label>
-                <input onChange={handleChange} name="imgUrl" type="text" />
-                <label>Word</label>
-                <input onChange={handleChange} name="word" type="text" />
-                <label>Type</label>
-                <input onChange={handleChange} name="type" type="text" />
-                <button type="submit">Submit Card</button>
+        <div className="create-card-container">
+            <form className="game-form gamplay-form" onSubmit={handleSubmit}>
+                <h3>Add a card to the database:</h3>
+                <input
+                    className="form-input"
+                    placeholder="Image URL..."
+                    onChange={handleChange}
+                    name="imgUrl"
+                    type="text"
+                    required
+                />
+                <input
+                    className="form-input"
+                    placeholder="Word..."
+                    onChange={handleChange}
+                    name="word"
+                    type="text"
+                    required
+                />
+                <input
+                    className="form-input"
+                    placeholder="Word Type..."
+                    onChange={handleChange}
+                    name="type"
+                    type="text"
+                    required
+                />
+                <button className="create-btn" type="submit">Submit Card</button>
             </form>
         </div>
     )

@@ -29,6 +29,11 @@
     padding: 2rem;
 }
 
+.gamplay-form {
+    width: 50%;
+    background-color: #fff;
+}
+
 .game-form h3 {
     margin: 0;
 }
@@ -95,4 +100,11 @@
 
 .answer-form-container button {
     width: 20rem;
+}
+
+.create-card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem 0;
 }
