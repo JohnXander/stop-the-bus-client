@@ -1,8 +1,7 @@
 .categories {
-    border-bottom: 1px solid white;
-    padding: 0 1rem;
+    border-bottom: 1px solid #E5E5E5;
     display: flex;
     justify-content: space-between;
-    width: 750px;
+    width: 50rem;
     margin-left: 5rem;
 }

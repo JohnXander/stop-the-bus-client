@@ -58,7 +58,7 @@ const Game = () => {
     }
 
     return (
-        <div>
+        <div className="gameplay-container">
             <div className="game-header">
                 <h1 className="game-name">{name}</h1>
                 {completed ? <p>Complete</p> : <p>In progress...</p>}

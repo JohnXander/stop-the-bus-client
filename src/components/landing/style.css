@@ -1,3 +1,7 @@
+.hero-container {
+    padding: 0 7rem;
+}
+
 .hero {
     width: 100%;
 }

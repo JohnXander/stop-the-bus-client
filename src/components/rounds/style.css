@@ -8,7 +8,7 @@
 .answers {
     display: flex;
     justify-content: space-between;
-    width: 750px;
+    width: 50rem;
 }
 
 .answers:hover {

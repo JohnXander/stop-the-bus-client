@@ -56,7 +56,7 @@ const Rounds = ({ rounds, userId, editRound, setEditRound }) => {
                                     />
                                 </div> :
                                 <div
-                                    style={{ backgroundColor: '#212529' }}
+                                    style={{ backgroundColor: '#fff' }}
                                     className='answers'
                                     onClick={() => handleClick(round, idx)}
                                 >
@@ -72,13 +72,26 @@ const Rounds = ({ rounds, userId, editRound, setEditRound }) => {
                         }
                         <div className='round-controls'>
                             {round.id === roundView && cards.length === 3 ?
-                                <button onClick={handleHide}>Hide Cards</button> :
+                                <i
+                                    onClick={handleHide}
+                                    class="fa-solid fa-eye-slash check-btn">
+                                </i> :
                                 round.id === roundView && cards.length < 3 ?
                                     <div className='cards-control'>
-                                        <button onClick={handleHide}>Hide Cards</button>
-                                        <button onClick={() => handleEdit(round.id)}>Edit Cards</button>
+                                        <i
+                                            onClick={handleHide}
+                                            class="fa-solid fa-eye-slash check-btn">
+                                        </i>
+                                        <i
+                                            onClick={() => handleEdit(round.id)}
+                                            className="fa-solid fa-pen-to-square edit-btn">
+                                        </i>
                                     </div> :
-                                    <button onClick={() => handleDelete(round.id)}>Delete Round</button>}
+                                    <i
+                                        onClick={() => handleDelete(round.id)}
+                                        className="fa-solid fa-trash-can delete-btn">
+                                    </i>
+                            }
                         </div>
                     </div>
                 )

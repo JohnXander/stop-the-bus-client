@@ -1,7 +1,7 @@
 .teams {
-    border-right: 1px solid white;
-    padding: 1rem;
-    width: 250px;
+    border-right: 1px solid #E5E5E5;
+    width: 16rem;
+    padding: 0 1rem;
 }
 
 .team h3 {
@@ -14,11 +14,17 @@
     gap: 0.5rem;
 }
 
+.points span {
+    font-size: 1.1rem;
+}
+
 .points p {
-    border: 1px solid white;
+    border: 1px solid #E5E5E5;
     text-align: center;
     width: 4rem;
     padding: 1rem;
     margin-top: 0.75rem;
+    margin-right: 0.75rem;
     border-radius: 3px;
+    font-size: 0.9rem;
 }
