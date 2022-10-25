@@ -26,6 +26,10 @@
     text-decoration: underline;
 }
 
+.category:hover {
+    text-decoration: underline;
+}
+
 .card-list {
     display: flex;
     gap: 1rem;
