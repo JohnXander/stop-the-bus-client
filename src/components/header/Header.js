@@ -59,6 +59,12 @@ const Header = ({ user, pageNav }) => {
                         <p>Joined {dateParts[1]} {dateParts[3]}</p>
                         <p>Total Games: {totalGames}</p>
                         <p>Total Cards: {totalCards}</p>
+                        <p
+                            onClick={() => handleNavigate('/')}
+                            className='sign-out-btn'
+                        >
+                            Sign Out
+                        </p>
                     </div>
                 }
             </div>

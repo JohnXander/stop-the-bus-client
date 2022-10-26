@@ -10,7 +10,6 @@ const Game = ({ user }) => {
     const location = useLocation()
     const { id, name, completed, userId } = location.state.game
     const formattedGameName = name[0].toUpperCase() + name.substring(1)
-
     const [formValue, setFormValue] = useState({})
 
     const [teams, setTeams] = useState([])
