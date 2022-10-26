@@ -59,6 +59,8 @@
 
 .game-list-controls {
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 2rem;
 }
 
@@ -79,6 +81,15 @@
 .delete-btn {
     color: #FF4B4B;
     cursor: pointer;
+}
+
+.confirm-delete {
+    color: #FF4B4B;
+    cursor: pointer;
+}
+
+.confirm-delete:hover {
+    text-decoration: underline;
 }
 
 .edit-btn {

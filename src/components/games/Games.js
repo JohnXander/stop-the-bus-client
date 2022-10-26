@@ -9,6 +9,7 @@ const Games = ({ user }) => {
     const [games, setGames] = useState([])
     const [editGameList, setEditGameList] = useState(true)
     const [editNameView, setEditNameView] = useState(undefined)
+    const [runFunction, setRunFunction] = useState(undefined)
     const navigate = useNavigate()
     const pageNav = location.state
 
@@ -30,11 +31,16 @@ const Games = ({ user }) => {
         }
     }
 
-    const handleDelete = (game) => {
+    const handleDelete = (game) => setRunFunction(game.id)
+
+    const handleConfirmDelete = (game) => {
         fetch(`http://localhost:4000/games/${game.id}`, {
             method: 'DELETE'
         })
-            .then(_ => setEditGameList(!editGameList))
+            .then(_ => {
+                setEditGameList(!editGameList)
+                setRunFunction(undefined)
+            })
     }
 
     const handleEdit = (game) => {
@@ -104,10 +110,19 @@ const Games = ({ user }) => {
                                         onClick={() => handleEdit(game)}
                                         className="fa-solid fa-pen-to-square edit-btn">
                                     </i>
-                                    <i
-                                        onClick={() => handleDelete(game)}
-                                        className="fa-solid fa-trash-can delete-btn">
-                                    </i>
+                                    {
+                                        runFunction === game.id ?
+                                            <p
+                                                onClick={() => handleConfirmDelete(game)}
+                                                className="confirm-delete"
+                                            >
+                                                Click to Delete
+                                            </p> :
+                                            <i
+                                                onClick={() => handleDelete(game)}
+                                                className="fa-solid fa-trash-can delete-btn">
+                                            </i>
+                                    }
                                 </div>
                                 {editNameView === game.id &&
                                     <EditGame
