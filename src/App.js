@@ -30,7 +30,7 @@ const App = () => {
       <Router>
         <Routes>
           <Route path='/' element={<Landing setLoggedInId={setLoggedInId} />} />
-          <Route path='/register' element={<Register />} />
+          <Route path='/register' element={<Register setLoggedInId={setLoggedInId} />} />
           <Route path='/games' element={<Games user={user} />} />
           <Route path='/cards' element={<MyCards user={user} />} />
           <Route path='/games/:id' element={<Game user={user} />} />

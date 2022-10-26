@@ -1,10 +1,11 @@
 .landing-container {
-    margin: 5rem 7rem;
+    padding: 5rem 7rem;
     display: flex;
+    border-top: 1px solid #E5E5E5;
 }
 
 .landing-app-name {
-    margin: 2rem 0 0 7rem;
+    margin: 2rem 0 1.5rem 7rem;
 }
 
 .hero-container {

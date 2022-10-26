@@ -17,6 +17,7 @@
 .register-btn {
     background-color: #58CC02;
     box-shadow: 0 4px 0 #4fb402;
+    margin: 0.5rem 0 0 0;
 }
 
 .register-btn:hover {

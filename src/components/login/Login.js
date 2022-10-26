@@ -15,7 +15,6 @@ const Login = ({ setLoggedInId }) => {
                 setLoggedInId(data.users[0].id)
                 navigate('/games')
             })
-
     }
 
     const handleChange = (e) => {
@@ -27,6 +26,8 @@ const Login = ({ setLoggedInId }) => {
             }
         })
     }
+
+    const handleNavigate = () => navigate('/register')
 
     return (
         <form onSubmit={handleSubmit} className='game-form login-form'>
@@ -49,7 +50,12 @@ const Login = ({ setLoggedInId }) => {
             />
             <button className='create-btn' type='submit'>Sign In</button>
             <div className='register-btn-container'>
-                <button className='create-btn register-btn'>Create New Account</button>
+                <p
+                    className='create-btn register-btn'
+                    onClick={handleNavigate}
+                >
+                    Create New Account
+                </p>
             </div>
         </form>
     )

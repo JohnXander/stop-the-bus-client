@@ -1,0 +1,10 @@
+.register-container {
+    border-top: 1px solid #E5E5E5;
+    display: flex;
+    justify-content: center;
+}
+
+.register-form {
+    margin-top: 5rem;
+    width: 30rem !important;
+}
