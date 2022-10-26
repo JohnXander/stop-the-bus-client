@@ -7,6 +7,7 @@ const CreateTeams = ({ user }) => {
     const navigate = useNavigate()
     const gameData = location.state.data.game
     const gameName = gameData.name
+    const formattedGameName = gameName[0].toUpperCase() + gameName.substring(1)
     const gameId = gameData.id
 
     const [formValue, setFormValue] = useState({})
@@ -83,7 +84,7 @@ const CreateTeams = ({ user }) => {
                 <div className="game-preview">
                     <div className="game-name-preview">
                         <i className="fa-solid fa-chalkboard"></i>
-                        {gameName}
+                        {formattedGameName}
                     </div>
                 </div>
             </div>

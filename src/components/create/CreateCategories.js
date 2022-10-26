@@ -7,8 +7,14 @@ const CreateCategories = ({ user }) => {
     const navigate = useNavigate()
     const game = location.state.gameData
     const gameName = location.state.gameData.name
+    const formattedGameName = gameName[0].toUpperCase() + gameName.substring(1)
     const gameId = location.state.gameData.id
     const gameTeams = location.state.data.createdTeams
+    const formattedTeamNames = gameTeams.map(team => {
+        return team.name[0].toUpperCase() + team.name.substring(1)
+    })
+
+
     const [formValue, setFormValue] = useState({})
 
     const handleSubmit = (e) => {
@@ -75,15 +81,15 @@ const CreateCategories = ({ user }) => {
                 <div className="game-preview">
                     <div className="game-name-preview">
                         <i className="fa-solid fa-chalkboard"></i>
-                        {gameName}
+                        {formattedGameName}
                     </div>
                     <div className="game-name-preview">
                         <i className="fa-solid fa-user-group"></i>
-                        {gameTeams.map((team, i) => {
+                        {formattedTeamNames.map((team, i) => {
                             return (
                                 i !== gameTeams.length - 1 ?
-                                    <span key={i}>{team.name}, </span> :
-                                    <span key={i}>{team.name}</span>
+                                    <span key={i}>{team}, </span> :
+                                    <span key={i}>{team}</span>
                             )
                         })}
                     </div>

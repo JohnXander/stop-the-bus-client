@@ -77,6 +77,7 @@ const Games = ({ user }) => {
                 </div>
                 {games && games.map(game => {
                     const dateParts = String(new Date(user.createdAt)).split(' ')
+                    const formattedGameName = game.name[0].toUpperCase() + game.name.substring(1)
                     return (
                         <div key={game.id}>
                             <div className="game-container">
@@ -84,7 +85,7 @@ const Games = ({ user }) => {
                                     className="game-item"
                                     onClick={() => handleNavigate(game)}
                                 >
-                                    {game.name}
+                                    {formattedGameName}
                                 </h3>
                                 <p>Created {dateParts[1]} {dateParts[3]}</p>
                                 <div className="game-list-controls">

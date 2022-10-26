@@ -9,6 +9,8 @@ import './style.css'
 const Game = ({ user }) => {
     const location = useLocation()
     const { id, name, completed, userId } = location.state.game
+    const formattedGameName = name[0].toUpperCase() + name.substring(1)
+
     const [formValue, setFormValue] = useState({})
 
     const [teams, setTeams] = useState([])
@@ -63,7 +65,7 @@ const Game = ({ user }) => {
             <Header user={user} />
             <div className="gameplay-container">
                 <div className="game-header">
-                    <h1 className="game-name">{name}</h1>
+                    <h1 className="game-name">{formattedGameName}</h1>
                     {completed ? <p>Completed!</p> : <p>In progress...</p>}
                 </div>
                 <div className="game">

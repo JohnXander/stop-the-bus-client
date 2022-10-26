@@ -24,14 +24,15 @@ const Teams = ({ teams, editTeam, setEditTeam, completed }) => {
     return (
         <div className='teams'>
             {teams.map(team => {
+                const formattedTeamName = team.name[0].toUpperCase() + team.name.substring(1)
                 return (
                     <div className='team' key={team.id}>
                         <h3>
-                            {team.name}
+                            {formattedTeamName}
                             {completed && team.points === winningPoints && <span> 🎉</span>}
                         </h3>
                         <div className='points'>
-                            <p><span>{team.points}</span> pts</p>
+                            <p><span>{team.points}</span> {team.points === 1 ? 'pt' : 'pts'}</p>
                             <i onClick={() => handleClick(team, 'inc')} className="fa-solid fa-circle-plus"></i>
                             <i onClick={() => handleClick(team, 'dec')} className="fa-solid fa-circle-minus"></i>
                         </div>
