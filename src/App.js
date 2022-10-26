@@ -31,12 +31,12 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Landing setLoggedInId={setLoggedInId} />} />
           <Route path='/register' element={<Register setLoggedInId={setLoggedInId} />} />
-          <Route path='/games' element={<Games user={user} />} />
-          <Route path='/cards' element={<MyCards user={user} />} />
-          <Route path='/games/:id' element={<Game user={user} />} />
-          <Route path='/create/name' element={<CreateName user={user} />} />
-          <Route path='/create/teams' element={<CreateTeams user={user} />} />
-          <Route path='/create/categories' element={<CreateCategories user={user} />} />
+          {loggedInId && <Route path='/games' element={<Games user={user} />} />}
+          {loggedInId && <Route path='/cards' element={<MyCards user={user} />} />}
+          {loggedInId && <Route path='/games/:id' element={<Game user={user} />} />}
+          {loggedInId && <Route path='/create/name' element={<CreateName user={user} />} />}
+          {loggedInId && <Route path='/create/teams' element={<CreateTeams user={user} />} />}
+          {loggedInId && <Route path='/create/categories' element={<CreateCategories user={user} />} />}
         </Routes>
       </Router>
     </div>
