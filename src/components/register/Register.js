@@ -14,7 +14,7 @@ const Register = ({ setLoggedInId }) => {
         const passwordMatch = password === confirm
 
         if (passwordMatch) {
-            fetch('http://localhost:4000/users', {
+            fetch('http://localhost:4000/users/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
