@@ -32,6 +32,8 @@
 }
 
 .start-note {
-    margin-left: 6rem;
+    margin-left: 5rem;
+    padding: 1rem 0;
     color: #737373;
+    text-align: center;
 }

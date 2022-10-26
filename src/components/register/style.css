@@ -2,9 +2,17 @@
     border-top: 1px solid #E5E5E5;
     display: flex;
     justify-content: center;
+    padding-top: 5rem;
 }
 
 .register-form {
-    margin-top: 5rem;
     width: 30rem !important;
+}
+
+.register-form input {
+    width: 15rem;
+}
+
+.register-form button {
+    width: 12.5rem;
 }

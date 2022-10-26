@@ -52,6 +52,11 @@
     font-size: 0.9rem;
 }
 
+.no-games {
+    margin-top: 2rem;
+    color: #737373;
+}
+
 .game-list-controls {
     display: flex;
     gap: 2rem;

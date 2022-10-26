@@ -9,18 +9,25 @@ const Register = ({ setLoggedInId }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        fetch('http://localhost:4000/users', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formValue),
-        })
-            .then(res => res.json())
-            .then(data => {
-                setLoggedInId(data.user.id)
-                navigate('/games')
+        const { username, password, imgUrl, confirm } = formValue
+        const newAccount = { username, password, imgUrl }
+        const passwordMatch = password === confirm
+
+        if (passwordMatch) {
+            fetch('http://localhost:4000/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newAccount),
             })
+                .then(res => res.json())
+                .then(data => {
+                    setLoggedInId(data.user.id)
+                    navigate('/games')
+                })
+        }
+
     }
 
     const handleChange = (e) => {
@@ -42,7 +49,7 @@ const Register = ({ setLoggedInId }) => {
                     <input
                         onChange={handleChange}
                         className='form-input'
-                        placeholder='Image URL...'
+                        placeholder='Profile Pic URL...'
                         name='imgUrl'
                         type="text"
                         required
@@ -60,6 +67,14 @@ const Register = ({ setLoggedInId }) => {
                         className='form-input'
                         placeholder='Password...'
                         name='password'
+                        type="password"
+                        required
+                    />
+                    <input
+                        onChange={handleChange}
+                        className='form-input'
+                        placeholder='Confirm Password...'
+                        name='confirm'
                         type="password"
                         required
                     />

@@ -41,7 +41,7 @@ const Rounds = ({ rounds, userId, editRound, setEditRound }) => {
 
     return (
         <div className='rounds'>
-            {rounds.length === 0 && <p className='start-note'>Add a new round to start the game...</p>}
+            {rounds.length === 0 && <p className='start-note'>Add a new round to start the game.</p>}
             {rounds.map((round, idx) => {
                 return (
                     <div key={round.id} className="round">
