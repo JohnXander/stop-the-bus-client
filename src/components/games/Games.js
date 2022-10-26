@@ -73,7 +73,7 @@ const Games = ({ user }) => {
                         <i className="fa-solid fa-circle-plus"></i>
                         CREATE NEW GAME
                     </button>
-                    {games.length === 0 && <p className='no-games'>You don't have any games yet.</p>}
+                    {games.length === 0 && <p className='no-games'>You don't have any games.</p>}
                 </div>
                 {games && games.map(game => {
                     const dateParts = String(new Date(user.createdAt)).split(' ')

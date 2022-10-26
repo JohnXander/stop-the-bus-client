@@ -68,27 +68,28 @@ const MyCards = ({ user }) => {
             <Header user={user} pageNav={pageNav} />
             <div className="wide-container">
                 <h1 className="cards-title">My cards</h1>
-                <div className="sort-container">
-                    <h4>SORT BY:</h4>
-                    <p
-                        className={sortCategory === 'NEW' ? 'active-category' : 'category'}
-                        onClick={() => setSortCategory('NEW')}
-                    >
-                        Newest
-                    </p>
-                    <p
-                        className={sortCategory === 'OLD' ? 'active-category' : 'category'}
-                        onClick={() => setSortCategory('OLD')}
-                    >
-                        Oldest
-                    </p>
-                    <p
-                        className={sortCategory === 'ABC' ? 'active-category' : 'category'}
-                        onClick={() => setSortCategory('ABC')}
-                    >
-                        Alphabetical Order
-                    </p>
-                </div>
+                {cards.length === 0 ? <p className='no-games'>You don't have any cards.</p> :
+                    <div className="sort-container">
+                        <h4>SORT BY:</h4>
+                        <p
+                            className={sortCategory === 'NEW' ? 'active-category' : 'category'}
+                            onClick={() => setSortCategory('NEW')}
+                        >
+                            Newest
+                        </p>
+                        <p
+                            className={sortCategory === 'OLD' ? 'active-category' : 'category'}
+                            onClick={() => setSortCategory('OLD')}
+                        >
+                            Oldest
+                        </p>
+                        <p
+                            className={sortCategory === 'ABC' ? 'active-category' : 'category'}
+                            onClick={() => setSortCategory('ABC')}
+                        >
+                            Alphabetical Order
+                        </p>
+                    </div>}
                 <div className="card-list">
                     {
                         editCardView ?
