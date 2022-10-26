@@ -1,16 +1,21 @@
-import Header from '../header/Header'
+import Login from '../login/Login'
 import './style.css'
 
-const Landing = ({ user }) => {
+const Landing = ({ setLoggedInId }) => {
+
     return (
         <>
-            <Header user={user} />
-            <div className='hero-container'>
-                <img
-                    className="hero"
-                    src="https://i.natgeofe.com/n/5f35194b-af37-4f45-a14d-60925b280986/NationalGeographic_2731043_4x3.jpg"
-                    alt="hero"
-                />
+            <h3 className='app-name landing-app-name'>Stop the Bus</h3>
+            <div className='landing-container'>
+                <div className='hero-container'>
+                    <img
+                        src="https://e9i3r2v2.stackpathcdn.com/wp-content/uploads/2021/08/AdobeStock_279216382-1182x665.jpeg"
+                        alt=""
+                    />
+                </div>
+                <div className='login-container'>
+                    <Login setLoggedInId={setLoggedInId} />
+                </div>
             </div>
         </>
     )

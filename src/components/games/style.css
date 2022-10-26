@@ -25,6 +25,7 @@
     cursor: pointer;
     box-shadow: 0 4px 0 #1AA8EB;
     font-weight: bold;
+    margin-top: 0.5rem;
 }
 
 .create-btn:hover {

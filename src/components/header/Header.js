@@ -8,8 +8,6 @@ const Header = ({ user, pageNav }) => {
     const [totalCards, setTotalCards] = useState(0)
     const navigate = useNavigate()
 
-    console.log('cabbage', pageNav)
-
     const dateParts = String(new Date(user.createdAt)).split(' ')
 
     const handleMouseOver = () => setIsHovering(true)
@@ -31,11 +29,11 @@ const Header = ({ user, pageNav }) => {
 
     return (
         <div className='header'>
-            <a className='app-name' href="/">
-                <h3>Stop the Bus</h3>
-            </a>
+            <h3 className='app-name'>
+                Stop the Bus
+            </h3>
             <div className='user'>
-                <div className='nav-link' style={pageNav === 'games' ? { color: '#737373' } : { color: '#d5d5d5' }}>
+                <div className='nav-link' style={pageNav === 'cards' ? { color: '#d5d5d5' } : { color: '#737373' }}>
                     <i className="fa-solid fa-chalkboard"></i>
                     <p onClick={() => handleNavigate('/games')}>GAMES</p>
                 </div>

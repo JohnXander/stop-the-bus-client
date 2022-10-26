@@ -6,11 +6,7 @@
 }
 
 .app-name {
-    text-decoration: none;
     color: #58CC02;
-}
-
-.app-name h3 {
     font-size: 1.5rem;
     font-weight: bolder;
 }

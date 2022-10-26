@@ -4,7 +4,6 @@ import {
   Route
 } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import Login from './components/login/Login'
 import Register from './components/register/Register'
 import Games from './components/games/Games'
 import Landing from './components/landing/Landing'
@@ -16,19 +15,21 @@ import MyCards from './components/myCards/MyCards'
 
 const App = () => {
   const [user, setUser] = useState({})
+  const [loggedInId, setLoggedInId] = useState(undefined)
 
   useEffect(() => {
-    fetch('http://localhost:4000/users/1')
-      .then(res => res.json())
-      .then(data => setUser(data.user))
-  }, [])
+    if (loggedInId !== undefined) {
+      fetch(`http://localhost:4000/users/${loggedInId}`)
+        .then(res => res.json())
+        .then(data => setUser(data.user))
+    }
+  }, [loggedInId])
 
   return (
     <div>
       <Router>
         <Routes>
-          <Route path='/' element={<Landing user={user} />} />
-          <Route path='/login' element={<Login />} />
+          <Route path='/' element={<Landing setLoggedInId={setLoggedInId} />} />
           <Route path='/register' element={<Register />} />
           <Route path='/games' element={<Games user={user} />} />
           <Route path='/cards' element={<MyCards user={user} />} />

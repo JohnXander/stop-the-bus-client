@@ -1,7 +1,28 @@
-.hero-container {
-    padding: 0 7rem;
+.landing-container {
+    margin: 5rem 7rem;
+    display: flex;
 }
 
-.hero {
-    width: 100%;
+.landing-app-name {
+    margin: 2rem 0 0 7rem;
+}
+
+.hero-container {
+    width: 60%;
+    border-right: 1px solid #E5E5E5;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.hero-container img {
+    width: 43rem;
+    border-radius: 20px;
+}
+
+.login-container {
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
