@@ -74,7 +74,7 @@
 
 .card {
     background-color: #fff;
-    border: 1px solid #E5E5E5;
+    border: 1px solid #E5E5E5 !important;
     border-radius: 10px;
     margin: 0 0 0.5rem 0;
     width: 15rem;
@@ -84,6 +84,12 @@
 .delete-card-btn {
     position: absolute;
     bottom: 1rem;
+    right: 1rem;
+}
+
+.confirm-delete-card {
+    position: absolute;
+    bottom: 0;
     right: 1rem;
 }
 

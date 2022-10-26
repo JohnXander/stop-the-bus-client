@@ -8,6 +8,7 @@ const MyCards = ({ user }) => {
     const [cards, setCards] = useState([])
     const [sortCategory, setSortCategory] = useState('NEW')
     const [editCardView, setEditCardView] = useState(false)
+    const [runFunction, setRunFunction] = useState(undefined)
     const [editCards, setEditCards] = useState(false)
     const [formValue, setFormValue] = useState({ userId: +user.id })
     const pageNav = location.state
@@ -56,7 +57,9 @@ const MyCards = ({ user }) => {
         })
     }
 
-    const handleDelete = (cardId) => {
+    const handleDelete = (cardId) => setRunFunction(cardId)
+
+    const handleConfirmDelete = (cardId) => {
         fetch(`http://localhost:4000/cards/${cardId}`, {
             method: 'DELETE'
         })
@@ -129,10 +132,19 @@ const MyCards = ({ user }) => {
                         const cardWord = card.word[0].toUpperCase() + card.word.substring(1)
                         return (
                             <div key={card.id} className="card">
-                                <i
-                                    onClick={() => handleDelete(card.id)}
-                                    className="fa-solid fa-trash-can delete-btn delete-card-btn">
-                                </i>
+                                {
+                                    runFunction === card.id ?
+                                        <p
+                                            onClick={() => handleConfirmDelete(card.id)}
+                                            className="confirm-delete confirm-delete-card"
+                                        >
+                                            Click to Delete
+                                        </p> :
+                                        <i
+                                            onClick={() => handleDelete(card.id)}
+                                            className="fa-solid fa-trash-can delete-btn delete-card-btn">
+                                        </i>
+                                }
                                 <div className='img-container'>
                                     <img
                                         src={card.imgUrl}
