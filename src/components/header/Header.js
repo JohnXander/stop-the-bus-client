@@ -56,6 +56,12 @@ const Header = ({ user, pageNav }) => {
                         className='profile-info'
                     >
                         <h5>{user.username}</h5>
+                        <p
+                            onClick={() => handleNavigate('/edit/account')}
+                            className='edit-account-btn'
+                        >
+                            Edit Account
+                        </p>
                         <p>Joined {dateParts[1]} {dateParts[3]}</p>
                         <p>Total Games: {totalGames}</p>
                         <p>Total Cards: {totalCards}</p>

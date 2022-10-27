@@ -12,10 +12,12 @@ import CreateName from './components/create/CreateName'
 import CreateTeams from './components/create/CreateTeams'
 import CreateCategories from './components/create/CreateCategories'
 import MyCards from './components/myCards/MyCards'
+import EditAccount from './components/edit/EditAccount'
 
 const App = () => {
   const [user, setUser] = useState({})
   const [loggedInId, setLoggedInId] = useState(undefined)
+  const [editAccount, setEditAccount] = useState(false)
 
   useEffect(() => {
     if (loggedInId !== undefined) {
@@ -23,7 +25,7 @@ const App = () => {
         .then(res => res.json())
         .then(data => setUser(data.user))
     }
-  }, [loggedInId])
+  }, [loggedInId, editAccount])
 
   return (
     <div>
@@ -31,6 +33,9 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Landing setLoggedInId={setLoggedInId} />} />
           <Route path='/register' element={<Register setLoggedInId={setLoggedInId} />} />
+          {loggedInId && <Route path='/edit/account' element={
+            <EditAccount user={user} editAccount={editAccount} setEditAccount={setEditAccount} />
+          } />}
           {loggedInId && <Route path='/games' element={<Games user={user} />} />}
           {loggedInId && <Route path='/cards' element={<MyCards user={user} />} />}
           {loggedInId && <Route path='/games/:id' element={<Game user={user} />} />}

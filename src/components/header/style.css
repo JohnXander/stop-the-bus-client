@@ -59,6 +59,14 @@
     z-index: 2;
 }
 
+.edit-account-btn {
+    color: #1FC2FF;
+    cursor: pointer;
+    font-weight: bold;
+    width: fit-content;
+    font-size: 1rem !important;
+}
+
 .profile-info h5 {
     margin: 0;
     font-size: 1.1rem;
@@ -77,6 +85,7 @@
     font-size: 1rem !important;
 }
 
-.sign-out-btn:hover {
+.sign-out-btn:hover,
+.edit-account-btn:hover {
     text-decoration: underline;
 }
