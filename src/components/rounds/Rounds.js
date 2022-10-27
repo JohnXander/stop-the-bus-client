@@ -10,7 +10,7 @@ const Rounds = ({ rounds, userId, editRound, setEditRound }) => {
 
     const displayCards = (idx) => {
         const answers = rounds[idx].answers.join(',').toLowerCase()
-        fetch(`http://localhost:4000/cards?words=${answers}`)
+        fetch(`http://localhost:4000/cards?userId=${userId}&words=${answers}`)
             .then(res => res.json())
             .then(data => setCards(data.cards))
     }
