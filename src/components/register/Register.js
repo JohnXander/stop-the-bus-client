@@ -32,7 +32,7 @@ const Register = ({ setLoggedInId }) => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.error !== undefined) {
-                        setWarning('Username already taken')
+                        setWarning(data.error)
                         setTimeout(() => setWarning(''), 5000)
                     } else {
                         setLoggedInId(data.user.id)

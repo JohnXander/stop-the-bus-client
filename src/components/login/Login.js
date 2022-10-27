@@ -5,6 +5,7 @@ import jwtDecode from 'jwt-decode'
 
 const Login = ({ setLoggedInId }) => {
     const [formValue, setFormValue] = useState({})
+    const [warning, setWarning] = useState('')
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
@@ -19,8 +20,13 @@ const Login = ({ setLoggedInId }) => {
         })
             .then(res => res.json())
             .then(data => {
-                const decoded = jwtDecode(data.token)
-                loginUser(decoded.username)
+                if (data.error !== undefined) {
+                    setWarning(data.error)
+                    setTimeout(() => setWarning(''), 5000)
+                } else {
+                    const decoded = jwtDecode(data.token)
+                    loginUser(decoded.username)
+                }
             })
     }
 
@@ -48,6 +54,7 @@ const Login = ({ setLoggedInId }) => {
     return (
         <form onSubmit={handleSubmit} className='game-form login-form'>
             <h2>Welcome Back!</h2>
+            {warning && <p className='warning'>{warning}</p>}
             <input
                 onChange={handleChange}
                 className='form-input'
