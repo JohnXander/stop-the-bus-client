@@ -45,7 +45,7 @@ const Rounds = ({ rounds, userId, editRound, setEditRound }) => {
             {rounds.map((round, idx) => {
                 return (
                     <div key={round.id} className="round">
-                        <p>{round.letter}</p>
+                        <p className='round-letter'>{round.letter}</p>
                         {
                             round.id === roundView && roundView !== undefined ?
                                 <div
@@ -97,7 +97,7 @@ const Rounds = ({ rounds, userId, editRound, setEditRound }) => {
                                     </div> :
                                     <i
                                         onClick={() => handleDelete(round.id)}
-                                        className="fa-solid fa-trash-can delete-btn">
+                                        className="fa-solid fa-trash-can delete-btn round-delete-btn">
                                     </i>
                             }
                         </div>

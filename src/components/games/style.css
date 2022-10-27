@@ -28,6 +28,10 @@
     margin-top: 0.5rem;
 }
 
+.create-game-btn {
+    margin-bottom: 0.5rem;
+}
+
 .create-btn:hover {
     background-color: #1FC2FF;
 }
@@ -53,7 +57,7 @@
 }
 
 .no-games {
-    margin: 2rem 0;
+    margin: 1.75rem 0;
     color: #737373;
 }
 

@@ -73,7 +73,7 @@ const Games = ({ user }) => {
                 <div className="games-header">
                     <h1>My Games</h1>
                     <button
-                        className="create-btn"
+                        className="create-btn create-game-btn"
                         onClick={() => handleNavigate('CREATE')}
                     >
                         <i className="fa-solid fa-circle-plus"></i>

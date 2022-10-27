@@ -5,6 +5,12 @@
     align-items: flex-start;
 }
 
+.round-letter {
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding-top: 0.4rem;
+}
+
 .answers {
     display: flex;
     justify-content: space-around;
@@ -36,4 +42,8 @@
     padding: 1rem 0;
     color: #737373;
     text-align: center;
+}
+
+.round-delete-btn {
+    padding-top: 0.7rem;
 }
