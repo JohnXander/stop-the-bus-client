@@ -13,8 +13,15 @@ const Register = ({ setLoggedInId }) => {
         const { username, password, imgUrl, confirm } = formValue
         const newAccount = { username, password, imgUrl }
         const passwordMatch = password === confirm
+        const passwordTooShort = password.length < 6
 
-        if (passwordMatch) {
+        if (!passwordMatch) {
+            setWarning("Passwords don't match")
+            setTimeout(() => setWarning(''), 5000)
+        } else if (passwordTooShort) {
+            setWarning("Password must be at least 6 characters")
+            setTimeout(() => setWarning(''), 5000)
+        } else {
             fetch('http://localhost:4000/users/register', {
                 method: 'POST',
                 headers: {
@@ -24,16 +31,15 @@ const Register = ({ setLoggedInId }) => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    setLoggedInId(data.user.id)
-                    navigate('/games')
+                    if (data.error !== undefined) {
+                        setWarning('Username already taken')
+                        setTimeout(() => setWarning(''), 5000)
+                    } else {
+                        setLoggedInId(data.user.id)
+                        navigate('/games')
+                    }
                 })
-        } else {
-            setWarning("Passwords don't match")
-            setTimeout(() => {
-                setWarning('')
-            }, 5000)
         }
-
     }
 
     const handleChange = (e) => {
