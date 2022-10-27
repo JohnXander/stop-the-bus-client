@@ -9,6 +9,11 @@
     width: 30rem !important;
 }
 
+.warning {
+    color: #FF4B4B;
+    margin: 0;
+}
+
 .register-form input {
     width: 15rem;
 }

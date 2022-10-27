@@ -4,6 +4,7 @@ import './style.css'
 
 const Register = ({ setLoggedInId }) => {
     const [formValue, setFormValue] = useState({})
+    const [warning, setWarning] = useState('')
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
@@ -26,6 +27,11 @@ const Register = ({ setLoggedInId }) => {
                     setLoggedInId(data.user.id)
                     navigate('/games')
                 })
+        } else {
+            setWarning("Passwords don't match")
+            setTimeout(() => {
+                setWarning('')
+            }, 5000)
         }
 
     }
@@ -46,6 +52,7 @@ const Register = ({ setLoggedInId }) => {
             <div className="register-container">
                 <form onSubmit={handleSubmit} className='game-form login-form register-form'>
                     <h2>Create a New Account</h2>
+                    {warning && <p className='warning'>{warning}</p>}
                     <input
                         onChange={handleChange}
                         className='form-input'
