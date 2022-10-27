@@ -16,9 +16,11 @@
     align-items: center;
 }
 
-.hero-container img {
-    width: 43rem;
+
+.hero-video {
+    width: 45.5rem;
     border-radius: 20px;
+    /* border: 3px solid #58CC02; */
 }
 
 .login-container {
