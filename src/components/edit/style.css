@@ -46,9 +46,10 @@
 
 .success {
     color: #58CC02;
-    margin: 0;
+    margin: 1rem 0;
 }
 
 .select-option {
     margin: 0 !important;
+    padding: 0 !important;
 }

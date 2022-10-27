@@ -37,11 +37,17 @@ const EditAccount = ({ user, editAccount, setEditAccount }) => {
                     },
                     body: JSON.stringify(state)
                 })
-                    .then(_ => {
-                        setEditAccount(!editAccount)
-                        setInput('')
-                        setSuccessMessage("Successfully Updated")
-                        setTimeout(() => setSuccessMessage(''), 5000)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.error !== undefined) {
+                            setWarning(data.error)
+                            setTimeout(() => setWarning(''), 5000)
+                        } else {
+                            setEditAccount(!editAccount)
+                            setInput('')
+                            setSuccessMessage("Successfully Updated")
+                            setTimeout(() => setSuccessMessage(''), 5000)
+                        }
                     })
 
             }
@@ -53,11 +59,17 @@ const EditAccount = ({ user, editAccount, setEditAccount }) => {
                 },
                 body: JSON.stringify(state)
             })
-                .then(_ => {
-                    setEditAccount(!editAccount)
-                    setInput('')
-                    setSuccessMessage("Successfully Updated")
-                    setTimeout(() => setSuccessMessage(''), 5000)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.error !== undefined) {
+                        setWarning(data.error)
+                        setTimeout(() => setWarning(''), 5000)
+                    } else {
+                        setEditAccount(!editAccount)
+                        setInput('')
+                        setSuccessMessage("Successfully Updated")
+                        setTimeout(() => setSuccessMessage(''), 5000)
+                    }
                 })
         }
     }
@@ -103,8 +115,8 @@ const EditAccount = ({ user, editAccount, setEditAccount }) => {
                         Change Password
                     </p>
                 </div>
-                {successMessage && <p className='success'>{successMessage}</p>}
                 {input === '' && <p className="start-note select-option">Select an option</p>}
+                {successMessage && <p className='success'>{successMessage}</p>}
                 {input && <form className="game-form login-form register-form account-form">
                     {input === 'pic' && <input
                         onChange={handleChange}
