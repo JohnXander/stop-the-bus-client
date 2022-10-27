@@ -32,7 +32,7 @@ const Teams = ({ teams, editTeam, setEditTeam, completed }) => {
                             {completed && team.points === winningPoints && <span> 🎉</span>}
                         </h3>
                         <div className='points'>
-                            <p><span>{team.points}</span> {team.points === 1 ? 'pt' : 'pts'}</p>
+                            <p><span>{team.points}</span> {team.points === 1 || team.points === -1 ? 'pt' : 'pts'}</p>
                             <i onClick={() => handleClick(team, 'inc')} className="fa-solid fa-circle-plus"></i>
                             <i onClick={() => handleClick(team, 'dec')} className="fa-solid fa-circle-minus"></i>
                         </div>
